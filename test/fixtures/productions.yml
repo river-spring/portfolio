@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shelf_id: 1
+  title: MyString
+  outline: MyString
+  production_image: MyString
+
+two:
+  shelf_id: 1
+  title: MyString
+  outline: MyString
+  production_image: MyString
