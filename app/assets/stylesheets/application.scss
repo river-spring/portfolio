@@ -15,3 +15,48 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/*追加したフォント*/
+@font-face {
+  font-family: 'Knewave';
+  src: font-url('knewave2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*使用している変数*/
+$backcolor: #07052b;
+$pointcolor: #f1d145;
+$textcolor: #ffffff;
+
+/*bodyのCSS*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+.body {
+	background-color: $backcolor;
+	color: $textcolor;
+	height: auto;
+	flex-grow: 1;
+}
+/*ヘッダーとフッターのCSS*/
+.nav {
+	height: 100px ;
+	background-color: $backcolor;
+	&__menu {
+		line-height: 100px;
+		padding-top: 30px;
+		&__icon {
+			font-family: 'Knewave', sans-serif;
+			font-size: 50px;
+			color: $pointcolor;
+		}
+	}
+}

@@ -1,3 +1,41 @@
 // Place all the styles related to the Homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*使用している変数*/
+$backcolor: #07052b;
+$pointcolor: #f1d145;
+$textcolor: #ffffff;
+/*Top画面のCSS*/
+.top {
+	color: $pointcolor;
+	font-family: 'Knewave', sans-serif;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 50px;
+	&__image{
+		background-image: url(movie.png);
+		width: 700px;
+		height: 530px;
+		background-color: $pointcolor;
+		background-size: 100%;
+		margin: 0 auto;
+	}
+}
+.about {
+	text-align: center;
+	padding:300px 0;
+	&__title {
+		color: $pointcolor;
+	}
+	&__text {
+		padding: 20px 0;
+	}
+	&__start {
+		color: $pointcolor;
+		font-family: 'Knewave', sans-serif;
+		font-size: 30px;
+	}
+	&__login {
+		color: $textcolor;
+	}
+}

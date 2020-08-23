@@ -1,2 +1,23 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<section class="top">
+				<h1>Stay movie!</h1>
+				<div class="top__image">
+					<!-- top画像 -->
+				</div>
+			</section>
+			<!-- about画面 -->
+			<div id="about" class="about">
+				<h1 class="about__title">Stay Movie!でできること。</h1>
+				<div class="about__text">
+					<p>好きな映画・ドラマの感想をメモできる。</p>
+					<p>好きな映画・ドラマを仲間とシェアできる。</p>
+					<p>好きな映画・ドラマを紹介できる。</p>
+				</div>
+				<%= link_to "Start!", new_user_registration_path, class: "about__start" %>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

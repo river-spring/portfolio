@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   namespace :users do
     get 'users/quit' => "users#quit"
     patch 'users/quit_update' => "users#quit_update"
-    resources :users, only: [:index, :show, :edit, :update, :destroy] do
+    resources :users, only: [ :show, :edit, :update, :destroy] do
       resource :friends, only: [:index, :create, :destroy]
       resource :friend_requests, only: [ :create, :destroy]
     end

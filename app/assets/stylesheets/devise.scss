@@ -1,0 +1,43 @@
+/*使用している変数*/
+$backcolor: #07052b;
+$pointcolor: #f1d145;
+$textcolor: #ffffff;
+/*新規登録画面のCSS*/
+.sign-up {
+	margin: 0 auto;
+	&__title {
+		color: $pointcolor;
+	}
+	&__form {
+		color: $backcolor;
+		margin-bottom: 10px;
+	}
+	&__btn {
+		color: $backcolor;
+		background-color: $pointcolor;
+	}
+	&__login {
+		color: #d42a2a;
+	}
+}
+/*ログイン画面のCSS*/
+.log-in {
+	margin: 0 auto;
+	&__title {
+		color: $pointcolor;
+	}
+	&__form {
+		color: $backcolor;
+		margin-bottom: 10px;
+	}
+	&__btn {
+		color: $backcolor;
+		background-color: $pointcolor;
+	}
+	&__signin {
+		color: #d42a2a;
+	}
+	&__forget {
+		color: #d42a2a;
+	}
+}

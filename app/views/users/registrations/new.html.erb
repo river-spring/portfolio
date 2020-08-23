@@ -1,0 +1,45 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <section class="sign-up col-xs-3">
+        <h2 class="sign-up__title">新規登録</h2>
+        <div class="form-group">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "users/shared/error_messages", resource: resource %>
+
+            <div class="field">
+              <%= f.label :表示名 %><br />
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "sign-up__form form-control" %>
+            </div>
+            <div class="field">
+              <%= f.label :ユーザーID %><br />
+              <%= f.text_field :user_id, autofocus: true, autocomplete: "user_id", class: "sign-up__form form-control"  %>
+            </div>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "sign-up__form form-control"  %>
+            </div>
+            <div class="field">
+              <%= f.label :パスワード %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> 文字以上)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password", class: "sign-up__form form-control"  %>
+            </div>
+
+            <div class="field">
+              <%= f.label :パスワード（確認用） %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "sign-up__form form-control"  %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "登録", class: "btn sign-up__btn" %>
+            </div>
+         <% end %>
+        </div>
+
+         <p>登録がお済みの方は<%= link_to "こちら",new_user_session_path, class: "sign-up__login" %></p>
+        </section>
+    </div>
+  </div>
+</div>
