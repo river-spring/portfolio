@@ -1,2 +1,30 @@
-<h1>Users::Users#edit</h1>
-<p>Find me in app/views/users/users/edit.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= form_with(model: @user, url: users_user_path, local: true) do |f| %>
+				<div class="edit">
+					<div class="col-xs-3">
+						<%= f.label :マイページ画像 %>
+						<%= attachment_image_tag @user, :mypage_image, :fill, fallback: "noback.png", class: " img-rounded" %>
+						<%= f.attachment_field :mypage_image, id: "mypage-image", class: "edit__attachment" %>
+						<%= attachment_image_tag @user, :profile_image, :fill, fallback: "noimage.png", size:"150x150", class: " img-circle col-xs-offset-1" %>
+						<%= f.label :プロフィール画像 %>
+						<%= f.attachment_field :profile_image, id: "profile-image", class: "edit__attachment" %>
+					</div>
+					<div class="col-xs-offset-2 col-xs-4">
+						<%= f.label :名前 %>
+						<%= f.text_field :name, class: "form-control edit__field" %>
+						<span><%= f.label :ユーザー %>ID</span>
+						<%= f.text_field :user_id, class: "form-control edit__field" %>
+						<span><%= f.label :自己紹介 %>(300文字以下)</span>
+						<%= f.text_area :introduction, class: "form-control edit__field" %>
+						<%= f.label :メールアドレス %>
+						<%= f.text_area :email, class: "form-control  edit__field" %>
+						<%= f.submit '編集内容を保存する', class: "btn edit__submit" %>
+					</div>
+					<%= link_to ' 退会する', users_users_quit_path, class: "btn btn-danger glyphicon glyphicon-warning-sign edit__quit" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

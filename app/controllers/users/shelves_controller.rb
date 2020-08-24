@@ -1,4 +1,4 @@
-class Users::ShelfsController < ApplicationController
+class Users::ShelvesController < ApplicationController
   def show
   end
 
@@ -11,7 +11,7 @@ class Users::ShelfsController < ApplicationController
   def edit
   end
 
-  def update
+  def edit
   end
 
   def destroy

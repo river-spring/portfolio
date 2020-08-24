@@ -1,2 +1,11 @@
-<h1>Users::Users#show</h1>
-<p>Find me in app/views/users/users/show.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render 'sidebar', user: @user %><!-- サイドバー -->
+			<div class="mypage col-xs-8">
+				<%= render 'my_image', user: @user %><!-- マイページ画像 -->
+				<p class="col-xs-offset-3"><%= @user.introduction %></p>
+			</div>
+		</div>
+	</div>
+</div>

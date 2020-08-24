@@ -15,21 +15,21 @@ Rails.application.routes.draw do
     get 'users/quit' => "users#quit"
     patch 'users/quit_update' => "users#quit_update"
     resources :users, only: [ :show, :edit, :update, :destroy] do
-      resource :friends, only: [:index, :create, :destroy]
+      resources :friends, only: [ :index, :create, :destroy]
       resource :friend_requests, only: [ :create, :destroy]
     end
-    resources :shelfs, only: [:show, :new, :create, :edit, :update, :destroy] do
-      resources :productions, only: [:show, :new, :create, :edit, :update, :destroy] do
-        resources :comments, only: [:create, :destroy]
+    resources :shelves, only: [ :show, :new, :create, :edit, :update, :destroy] do
+      resources :productions, only: [ :show, :new, :create, :edit, :update, :destroy] do
+        resources :comments, only: [ :create, :destroy]
       end
     end
-    resources :groups, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :recommendations, only: [:show, :new, :create, :destroy]
+    resources :groups, only: [ :index, :new, :create, :edit, :update, :destroy]
+    resources :recommendations, only: [ :show, :new, :create, :destroy]
   end
   namespace :admins do
-    resources :users, only: [:index, :show, :edit, :update]
-    resource :groups, only: [:index]
-    resource :shelfs, only: [:index]
+    resources :users, only: [ :index, :show, :edit, :update]
+    resource :groups, only: [ :index]
+    resource :shelves, only: [ :index]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

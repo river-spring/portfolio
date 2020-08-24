@@ -1,3 +1,88 @@
 // Place all the styles related to the Users/Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*使用している変数*/
+$backcolor: #07052b;
+$pointcolor: #f1d145;
+$textcolor: #ffffff;
+
+/*サイドバーのCSS*/
+.sidebar {
+	&__btn {
+		color: $backcolor;
+		background-color: $pointcolor;
+		margin:30px 0 !important;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+	&__profile {
+		padding: 10px 0;
+		&__image {
+			display: inline-block;
+			margin-right: 5px;
+			border-radius: 50px;
+		}
+		&__name {
+			color: $textcolor;
+			font-weight: bold;
+			&:hover {
+				color: $textcolor;
+			}
+		}
+	}
+}
+/*マイページトップイメージのCSS*/
+.myimage {
+	position: relative;
+	&__back-image {
+		display: inline-block;
+		height: 400px;
+	}
+	&__profile-image {
+		position: absolute;
+		top: 320px;
+		border: solid 4px $backcolor;
+	}
+}
+.mybtn {
+	padding-top: 20px;
+	&__btn {
+		color: $textcolor;
+		background-color: $backcolor;
+		border: solid 1px $textcolor !important;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+.myname {
+	padding-top: 60px;
+	&__name {
+		font-size: 30px;
+		font-weight: bold;
+	}
+	&__user-id {
+		font-size: 15px;
+		color: #b0c4de;
+	}
+}
+/*ユーザー情報編集画面のCSS*/
+.edit {
+	&__attachment {
+		padding: 10px 0;
+	}
+	&__field {
+		margin-bottom: 10px;
+	}
+	&__submit {
+		color: $backcolor;
+		background-color: $pointcolor;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+	&__quit {
+		margin-top: 400px;
+	}
+}
