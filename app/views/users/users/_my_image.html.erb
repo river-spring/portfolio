@@ -4,7 +4,7 @@
 </div>
 <div class="mybtn col-xs-offset-12">
 	<% if user == current_user %>
-	<%= link_to "プロフィールを編集する", edit_users_user_path(user), class: "btn mybtn__btn" %>
+	<%= link_to "プロフィールを編集する", edit_users_user_path(user), class: "btn mybtn__btn", data: {"turbolinks"=>false} %>
 	<% elsif user != current_user %>
 	<%= link_to "作品をオススメする", new_users_recommendation, class: "btn mybtn__btn" %>
 	<% else %>

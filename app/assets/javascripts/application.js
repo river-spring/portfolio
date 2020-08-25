@@ -16,3 +16,23 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+// ユーザー編集機能のプレビュー機能
+$(function(){
+	$('#mypage-image').on('change', function(e) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			$(".mypage-img").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	});
+});
+
+$(function(){
+				$('#profile-image').on('change', function(e) {
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						$(".profile-img").attr('src', e.target.result);
+					}
+					reader.readAsDataURL(e.target.files[0]);
+				});
+			});

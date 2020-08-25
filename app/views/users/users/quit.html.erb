@@ -1,2 +1,20 @@
-<h1>Users::Users#quit</h1>
-<p>Find me in app/views/users/users/quit.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render 'sidebar', user: current_user %><!-- サイドバー -->
+			<div class="quit col-xs-8">
+				<p class="quit__text">本当に退会しますか？</p>
+				<p class="quit__text">退会すると以下のサービスが利用できなくなります。</p>
+				<ul class="col-xs-offset-4">
+					<li>棚で作品を管理する</li>
+					<li>フレンド機能</li>
+					<li>コミュニティーへの参加・閲覧</li>
+				</ul>
+				<div class="quit__icon col-xs-offset-4">
+					<%= link_to "退会しない",users_user_path(current_user) , class: "btn quit__icon__btn btn-info" %>
+					<%= link_to "退会する",users_users_quit_update_path, method: :patch , class: "btn btn-danger" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

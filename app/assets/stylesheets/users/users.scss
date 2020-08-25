@@ -67,6 +67,23 @@ $textcolor: #ffffff;
 		color: #b0c4de;
 	}
 }
+/*マイページのCSS*/
+.mypage {
+	&__shelves {
+		margin: 50px auto;
+		&__btn {
+			color: $backcolor;
+			background-color: $pointcolor;
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+		&__empty {
+			padding-top: 30px;
+			text-align: center;
+		}
+	}
+}
 /*ユーザー情報編集画面のCSS*/
 .edit {
 	&__attachment {
@@ -84,5 +101,19 @@ $textcolor: #ffffff;
 	}
 	&__quit {
 		margin-top: 400px;
+	}
+}
+/*退会画面のCSS*/
+.quit {
+	height: 500px;
+	&__text {
+		text-align: center;
+		padding-bottom: 30px;
+	}
+	&__icon {
+		padding-top: 30px;
+		&__btn {
+			margin-right: 60px;
+		}
 	}
 }

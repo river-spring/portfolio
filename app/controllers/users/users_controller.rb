@@ -4,7 +4,8 @@ class Users::UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
+    @shelves = Shelf.where(user_id: params[:id])
   end
 
   def update
@@ -17,13 +18,13 @@ class Users::UsersController < ApplicationController
     end
   end
 
-  def destroy
-  end
-
   def quit
   end
 
   def quit_update
+    customer = current_customer
+    customer.destroy
+    redirect_to root_path
   end
 
   private

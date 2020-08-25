@@ -12,6 +12,8 @@ class User < ApplicationRecord
          has_many :friends, dependent: :destroy
          attachment :mypage_image
          attachment :profile_image
+
+         acts_as_paranoid
          # has_many :followings, through: :friends, sourse: :friend
          # has_many :reverse_of_friends, class_name: 'Friend', foreign_key: 'friend_id'
          # has_many :followers, through: :reverse_of_friends, source: :user
