@@ -1,3 +1,67 @@
 // Place all the styles related to the Users/Shelves controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*使用している変数*/
+$backcolor: #07052b;
+$pointcolor: #f1d145;
+$textcolor: #ffffff;
+$subcolor: #b0c4de;
+/*棚新規作成画面のCSS*/
+.new-shelf {
+	&__attachment {
+		margin-top: 10px;
+	}
+	&__text {
+		margin-bottom: 10px;
+	}
+	&__submit {
+		margin-top: 100px;
+		color: $backcolor;
+		background-color: $pointcolor;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+/*棚編集画面のCSS*/
+.edit-shelf {
+	&__attachment {
+		margin-top: 10px;
+	}
+	&__text {
+		margin-bottom: 10px;
+	}
+	&__submit {
+		margin-top: 100px;
+		color: $backcolor;
+		background-color: $pointcolor;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+/*棚詳細画面のCSS*/
+.shelf {
+	&__image {
+		height: 400px;
+	}
+	&__btn {
+		color: $textcolor;
+		font-size: 20px;
+		margin-bottom: 10px;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+	&__add {
+		margin-top: 30px;
+		color: $backcolor;
+		background-color: $pointcolor;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+	&__empty {
+		padding-top: 40px;
+	}
+}

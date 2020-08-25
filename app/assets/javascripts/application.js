@@ -28,11 +28,31 @@ $(function(){
 });
 
 $(function(){
-				$('#profile-image').on('change', function(e) {
-					var reader = new FileReader();
-					reader.onload = function (e) {
-						$(".profile-img").attr('src', e.target.result);
-					}
-					reader.readAsDataURL(e.target.files[0]);
-				});
-			});
+	$('#profile-image').on('change', function(e) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+		$(".profile-img").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	});
+});
+// 棚新規画像のプレビュー
+$(function(){
+	$('#new-shelf-image').on('change', function(e) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+		$(".new-shelf-img").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	});
+});
+// 棚編集画像のプレビュー
+$(function(){
+	$('#edit-shelf-image').on('change', function(e) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+		$(".edit-shelf-img").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	});
+});

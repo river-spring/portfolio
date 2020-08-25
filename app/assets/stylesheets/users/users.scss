@@ -5,6 +5,7 @@
 $backcolor: #07052b;
 $pointcolor: #f1d145;
 $textcolor: #ffffff;
+$subcolor: #b0c4de;
 
 /*サイドバーのCSS*/
 .sidebar {
@@ -64,7 +65,7 @@ $textcolor: #ffffff;
 	}
 	&__user-id {
 		font-size: 15px;
-		color: #b0c4de;
+		color: $subcolor;
 	}
 }
 /*マイページのCSS*/
@@ -81,6 +82,21 @@ $textcolor: #ffffff;
 		&__empty {
 			padding-top: 30px;
 			text-align: center;
+		}
+		&__shelf {
+			margin-top: 30px;
+			border: solid 1px $subcolor;
+			&__box {
+				&:nth-child(n+2) {
+					border-top: solid 1px $subcolor;
+				}
+				&__title {
+					padding: 0 10px;
+				}
+				&__text {
+					padding: 0 10px;
+				}
+			}
 		}
 	}
 }

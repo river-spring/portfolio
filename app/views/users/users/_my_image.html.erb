@@ -1,12 +1,12 @@
 <div class="myimage col-xs-offset-2">
-	<%= attachment_image_tag user, :mypage_image, :fill, fallback: "noback.png", class: "myimage__back-image img-rounded" %>
-	<%= attachment_image_tag user, :profile_image, :fill, fallback: "noimage.png", size:"150x150", class: "myimage__profile-image img-circle col-xs-offset-1" %>
+	<%= attachment_image_tag user, :mypage_image, fallback: "noback.png", class: "myimage__back-image img-rounded" %>
+	<%= attachment_image_tag user, :profile_image, fallback: "noimage.png", size:"150x150", class: "myimage__profile-image img-circle col-xs-offset-1" %>
 </div>
 <div class="mybtn col-xs-offset-12">
 	<% if user == current_user %>
 	<%= link_to "プロフィールを編集する", edit_users_user_path(user), class: "btn mybtn__btn", data: {"turbolinks"=>false} %>
 	<% elsif user != current_user %>
-	<%= link_to "作品をオススメする", new_users_recommendation, class: "btn mybtn__btn" %>
+	<%= link_to "作品をオススメする", new_users_recommendation, class: "btn mybtn__btn", data: {"turbolinks"=>false} %>
 	<% else %>
 	<%= link_to "友達申請を送る", users_user_friend_requests(user), class: "btn mybtn__btn" %>
 	<% end %>

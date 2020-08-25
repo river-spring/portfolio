@@ -1,2 +1,30 @@
-<h1>Users::Shelves#show</h1>
-<p>Find me in app/views/users/shelves/show.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render 'users/users/sidebar', user: current_user %><!-- サイドバー -->
+			<section class="shelf col-xs-8 col-xs-offset-2">
+				<%= attachment_image_tag @shelf, :shelf_image, fallback: "shelf.png", class: "shelf__image img-rounded" %>
+				<h2 class="shelf__name"><%= @shelf.name %></h2>
+				<% if @shelf.user_id == current_user.id %>
+					<%= link_to "", edit_users_shelf_path(@shelf), class: "glyphicon glyphicon-cog shelf__btn  col-xs-offset-8", data: {"turbolinks"=>false} %>
+				<% end %>
+				<p class="col-xs-9"><%= @shelf.outline %></p>
+				<% if @shelf.user_id == current_user.id %>
+					<%= link_to "作品を追加", new_users_shelf_production_path(@shelf), class: "btn shelf__add col-xs-offset-8", data: {"turbolinks"=>false} %>
+				<% end %>
+				<% if Production.find_by(shelf_id: params[:id]).nil? %>
+					<p class="shelf__empty col-xs-offset-4">棚は空です。</p>
+				<% else %>
+					<% @productions.each do |production| %>
+						<div class="shelf__production col-xs-3">
+							<%= link_to users_shelf_production_path(production.shelf_id, production.id) do %>
+								<%= attachment_image_tag production, :image, fallback: "production.png", class: "shelf__production__image" %>
+								<%= production.name %>
+							<% end %>
+						</div>
+					<% end %>
+				<% end %>
+			</section>
+		</div>
+	</div>
+</div>

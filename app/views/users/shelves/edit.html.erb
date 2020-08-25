@@ -1,2 +1,25 @@
-<h1>Users::Shelves#edit</h1>
-<p>Find me in app/views/users/shelves/edit.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render 'users/users/sidebar', user: current_user %><!-- サイドバー -->
+			<section class="edit-shelf">
+				<h2>New Shelf</h2>
+				<%= form_with(model: @shelf, url:  users_shelf_path, local: true) do |f| %>
+					<div class="col-xs-3">
+						<%= f.label :棚の画像 %>
+						<%= attachment_image_tag @shelf, :shelf_image, fallback: "shelf.png", size:"300x200", class: " img-rounded edit-shelf-img" %>
+						<%= f.attachment_field :shelf_image, id: "edit-shelf-image", class: "new-shelf__attachment" %>
+					</div>
+					<div class="col-xs-offset-2 col-xs-4">
+						<%= f.label :棚の名前 %>
+						<%= f.text_field :name, class: "form-control edit-shelf__text" %>
+						<p><%= f.label :棚の概要 %>（300文字以内）</p>
+						<%= f.text_area :outline, class: "form-control edit-shelf__text" %>
+						<%= f.submit '変更を保存', class: "btn edit-shelf__submit col-xs-offset-10" %>
+					</div>
+				<% end %>
+				<%= link_to "棚を削除する",  users_shelf_path(@shelf), method: :delete, class: "btn btn-danger col-xs-offset-10" %>
+			</section>
+		</div>
+	</div>
+</div>

@@ -7,15 +7,19 @@
 				<p class="col-xs-offset-3"><%= @user.introduction %></p>
 				<div class="mypage__shelves col-xs-offset-3">
 					<% if current_user %>
-						<%= link_to "New Shelf",new_users_shelf_path, class: "btn mypage__shelves__btn col-xs-offset-11" %>
+						<%= link_to "New Shelf",new_users_shelf_path, class: "btn mypage__shelves__btn col-xs-offset-11", data: {"turbolinks"=>false} %>
 					<% end %>
 					<% if Shelf.find_by(user_id: params[:id]).nil? %>
 						<p class="mypage__shelves__empty">まだ棚は作成されていません。</p>
 					<% else %>
-						<% @shelves.each do |shelf| %>
-							<%= link_to shelf.name, users_shelf_path(shelf) %>
-							<%= shelf.outline %>
-						<% end %>
+						<div class="mypage__shelves__shelf">
+							<% @shelves.each do |shelf| %>
+								<div class="mypage__shelves__shelf__box">
+									<h4 class="mypage__shelves__shelf__box__title"><%= link_to shelf.name, users_shelf_path(shelf) %></h4>
+									<p class="mypage__shelves__shelf__box__text"><%= shelf.outline %></p>
+								</div>
+							<% end %>
+						</div>
 					<% end %>
 				</div>
 			</div>
