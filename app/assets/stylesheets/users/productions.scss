@@ -1,3 +1,21 @@
 // Place all the styles related to the Users/Productions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*使用している変数*/
+$backcolor: #07052b;
+$pointcolor: #f1d145;
+$textcolor: #ffffff;
+$subcolor: #b0c4de;
+/*作品新規登録のCSS*/
+.new-production {
+	&__sarch {
+		color: $backcolor;
+		&__select {
+			margin-bottom: 10px !important;
+		}
+		&__result {
+			color: $textcolor;
+			margin-top: 30px;
+		}
+	}
+}

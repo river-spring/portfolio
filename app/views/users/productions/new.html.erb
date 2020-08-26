@@ -1,2 +1,25 @@
-<h1>Users::Productions#new</h1>
-<p>Find me in app/views/users/productions/new.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render 'users/users/sidebar', user: current_user %><!-- サイドバー -->
+			<section class="col-xs-7 col-xs-offset-2 new-production">
+				<!-- 作品検索 -->
+				<div class="new-production__sarch">
+					<%= form_with url: new_users_shelf_production_path(params[:shelf_id]), method: :get, local: true do |f| %>
+							<%= f.select :genre, [["---選択してください---", ""],["映画","movie"],["ドラマ/アニメ","tv"]],{}, class: "btn btn-default dropdown-toggle new-production__sarch__select" %>
+						<div class="input-group">
+							<%= f.text_field :production_title, class: "form-control" %>
+							<span class="input-group-btn"><button type="button" id="production-search" class="btn btn-default">検索</button></span>
+						</div>
+					<% end %>
+					<div class="new-production__sarch__result">
+						<div id="poster_path"><img id="poster_img"></div>
+						<span id="title">作品名：</span>
+						<span id="release_date">公開日：</span>
+					</div>
+				</div>
+				<!-- 作品検索 -->
+			</section>
+		</div>
+	</div>
+</div>

@@ -3,6 +3,7 @@ class Users::ProductionsController < ApplicationController
   end
 
   def new
+    @production = Production.new
   end
 
   def create
