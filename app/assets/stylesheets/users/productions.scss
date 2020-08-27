@@ -13,9 +13,20 @@ $subcolor: #b0c4de;
 		&__select {
 			margin-bottom: 10px !important;
 		}
-		&__result {
-			color: $textcolor;
-			margin-top: 30px;
+	}
+}
+/*作品検索のCSS*/
+.production_search {
+	&__form {
+		margin-bottom: 10px !important;
+	}
+	&__results {
+		margin: 20px 0;
+		&__box {
+			margin: 20px 0;
+			&__outline {
+			margin-top: 10px;
+			}
 		}
 	}
 }

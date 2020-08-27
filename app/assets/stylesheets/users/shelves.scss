@@ -64,4 +64,14 @@ $subcolor: #b0c4de;
 	&__empty {
 		padding-top: 40px;
 	}
+	&__production {
+		margin: 20px;
+		&:hover {
+			opacity: 0.8;
+		}
+		&__title {
+			color: $textcolor;
+			margin: 10px 0;
+		}
+	}
 }

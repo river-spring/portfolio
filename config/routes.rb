@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     end
     resources :shelves, only: [ :show, :new, :create, :edit, :update, :destroy] do
       resources :productions, only: [ :show, :new, :create, :edit, :update, :destroy] do
+         collection do
+          get :search
+         end
         resources :comments, only: [ :create, :destroy]
       end
     end

@@ -16,10 +16,10 @@
 					<p class="shelf__empty col-xs-offset-4">棚は空です。</p>
 				<% else %>
 					<% @productions.each do |production| %>
-						<div class="shelf__production col-xs-3">
+						<div class="shelf__production col-xs-4">
 							<%= link_to users_shelf_production_path(production.shelf_id, production.id) do %>
-								<%= attachment_image_tag production, :image, fallback: "production.png", class: "shelf__production__image" %>
-								<%= production.name %>
+								<%= image_tag production.image_id, fallback: "production.png", class: "shelf__production__image" %>
+								<p class="shelf__production__title"><%= production.title %></p>
 							<% end %>
 						</div>
 					<% end %>
