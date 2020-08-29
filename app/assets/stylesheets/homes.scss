@@ -13,7 +13,7 @@ $textcolor: #ffffff;
 	padding-top: 20px;
 	padding-bottom: 50px;
 	&__image{
-		background-image: url(movie.png);
+		background-image: image-url(movie.png);
 		width: 700px;
 		height: 530px;
 		background-color: $pointcolor;
