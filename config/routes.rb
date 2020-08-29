@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       resource :friend_requests, only: [ :create, :destroy]
     end
     resources :shelves, only: [ :show, :new, :create, :edit, :update, :destroy] do
-      resources :productions, only: [ :show, :new, :create, :edit, :update, :destroy] do
+      resources :productions, only: [ :show, :new, :create, :destroy] do
          collection do
           get :search
          end

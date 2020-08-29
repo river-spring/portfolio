@@ -1,6 +1,8 @@
 class Users::ProductionsController < ApplicationController
   def show
-
+    @production = Production.find(params[:id])
+    @shelf = Shelf.find(params[:shelf_id])
+    @comment = Comment.new
   end
 
   def new
@@ -27,13 +29,11 @@ class Users::ProductionsController < ApplicationController
     redirect_to users_shelf_path(@shelf), notice: "棚に追加しました！"
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
+    production = Production.find(params[:id])
+    shelf = Shelf.find(params[:shelf_id])
+    production.destroy
+    redirect_to users_shelf_path(shelf), notice: "作品を削除しました。"
   end
   private
   def production_params

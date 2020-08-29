@@ -1,0 +1,3 @@
+alert('コメントの登録に成功しました')
+$('#production_comments').html("<%= j(render 'users/productions/comment',{ comment: @comment, production: @production, shelf: @shelf }) %>");
+$('#comment_textarea').val('')

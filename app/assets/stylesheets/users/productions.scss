@@ -30,3 +30,21 @@ $subcolor: #b0c4de;
 		}
 	}
 }
+/*作品詳細のコメントCSS*/
+.production_comments {
+	margin: 20px 0;
+	&__box {
+		padding-bottom: 10px;
+		border-bottom: solid 1px $subcolor;
+		&__date {
+			color: $subcolor;
+			padding-top: 5px;
+		}
+	}
+}
+.comment_form {
+	margin: 20px 0;
+	&__btn {
+		margin-top: 10px;
+	}
+}
