@@ -23,11 +23,11 @@
             </button>
             <% if user_signed_in? %>
               <%= link_to users_user_path(current_user), class: "navbar-brand" do %>
-                <img alt="Brand" src="/assets/logo.png" style="height: 80px;">
+                <%= image_tag 'logo.png', alt: "Brand", style: "height: 80px;" %>
               <% end %>
             <% else %>
               <%= link_to root_path, class: "navbar-brand" do %>
-                <img alt="Brand" src="/assets/logo.png" style="height: 80px;">
+                <%= image_tag 'logo.png', alt: "Brand", style: "height: 80px;" %>
               <% end %>
             <% end %>
             </div>
