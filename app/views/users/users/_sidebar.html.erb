@@ -4,7 +4,7 @@
 	<%= link_to "コミュニティ", users_groups_path, class: "btn sidebar__btn btn-lg btn-block" %>
 	<%= link_to "検索", search_path, class: "btn sidebar__btn btn-lg btn-block" %>
 	<div class="sidebar__profile">
-		<%= attachment_image_tag user, :profile_image, fallback: "noimage.png", size:"50x50", class: "sidebar__profile__image" %>
+		<%= attachment_image_tag user, :profile_image, fallback: noimage.png, size:"50x50", class: "sidebar__profile__image" %>
 		<%= link_to current_user.name, users_user_path(user),class: "sidebar__profile__name" %>
 	</div>
 </div>
