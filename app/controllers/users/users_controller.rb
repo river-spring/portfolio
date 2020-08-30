@@ -1,6 +1,6 @@
 class Users::UsersController < ApplicationController
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @shelves = Shelf.where(user_id: @user.id)
   end
 

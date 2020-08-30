@@ -19,7 +19,7 @@
 					<div class="production_search__results">
 						<% @productions["results"].each do |production| %>
 							<div class="col-xs-6 production_search__results__box">
-								<%= image_tag "https://image.tmdb.org/t/p/w154#{production['poster_path']}", fallback: "production.png", class: "col-xs-6" %>
+								<%= image_tag "https://image.tmdb.org/t/p/w154#{production['poster_path']}", class: "col-xs-6 error_image" %>
 								<div class="col-xs-6">
 									<p>[タイトル]<br><%= production["name"] %></p>
 									<p>[放送開始日]<br><%= production["first_air_date"] %></p>

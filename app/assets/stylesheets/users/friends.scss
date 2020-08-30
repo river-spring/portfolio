@@ -1,3 +1,16 @@
 // Place all the styles related to the Users/Friends controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*使用している変数*/
+$backcolor: #07052b;
+$pointcolor: #f1d145;
+$textcolor: #ffffff;
+$subcolor: #b0c4de;
+/*フレンド一覧のCSS*/
+.friend {
+	margin: 50px 0;
+	&__empty {
+		padding-top: 20px;
+		text-align: center;
+	}
+}
