@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_134954) do
+ActiveRecord::Schema.define(version: 2020_08_31_011852) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,21 +33,12 @@ ActiveRecord::Schema.define(version: 2020_08_27_134954) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "friend_requests", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["friend_id"], name: "index_friend_requests_on_friend_id"
-    t.index ["user_id", "friend_id"], name: "index_friend_requests_on_user_id_and_friend_id", unique: true
-    t.index ["user_id"], name: "index_friend_requests_on_user_id"
-  end
-
   create_table "friends", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "friend_flag"
     t.index ["friend_id"], name: "index_friends_on_friend_id"
     t.index ["user_id", "friend_id"], name: "index_friends_on_user_id_and_friend_id", unique: true
     t.index ["user_id"], name: "index_friends_on_user_id"

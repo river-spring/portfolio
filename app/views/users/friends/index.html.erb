@@ -4,37 +4,55 @@
 			<%= render '/users/users/sidebar', user: current_user %><!-- サイドバー -->
 			<div class="mypage col-xs-8">
 				<%= render '/users/users/my_image', user: current_user %><!-- マイページ画像 -->
-				<section class="friend col-xs-offset-3">
+				<div class="friend col-xs-offset-3">
 					<ul class="nav nav-pills" id="friend__tab_menu">
-						<li><%= link_to "友達一覧", users_user_friends_path(current_user, anchor: "frinds_list"), class: "active" %></li>
-						<li><%= link_to "申請中", users_user_friends_path(current_user, anchor: "frind_request"), class: "" %></li>
-						<li><%= link_to "承認待ち", users_user_friends_path(current_user, anchor: "frind_wait"), class: "" %></li>
-						<li><%= link_to "オススメ", users_user_friends_path(current_user, anchor: "frind_recommend"), class: "" %></li>
+						<li><%= link_to "友達一覧",  "javascript:void(0)", data: { target: "frinds_list" }, class: "active" %></li>
+						<li><%= link_to "申請中",   "javascript:void(0)" , data: { target: "frind_request" }%></li>
+						<li><%= link_to "承認待ち",  "javascript:void(0)", data: { target: "frind_wait" }%></li>
+						<li><%= link_to "オススメ",  "javascript:void(0)", data: { target: "frind_recommend" } %></li>
 					</ul>
 					<div id="friend_tab_contents">
-						<div id="frinds_list" class="friend__tab">
+						<section id="frinds_list" class="friend__tab">
 							<h4>フレンド一覧</h4>
-							<% if Friend.find_by(user_id: current_user.id).nil? %>
-								<p class="friend__empty">まだ友達は登録されていません。</p>
-							<% else %>
+							<% if @friends.exists? %>
 								<% @friends.each do |friend| %>
-									<%= attachment_image_tag friend.friend, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
-									<%= friend.name %>
-									<%= friend.introduction %>
+									<%= attachment_image_tag friend.friend.user, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
+									<%= link_to friend.friend.name, users_user_path(friend.friend),class: "sidebar__profile__name" %>
+									<%= friend.friend.introduction %>
 								<% end %>
+							<% else %>
+								<p class="friend__empty">まだ友達は登録されていません。</p>
 							<% end %>
-						</div>
-						<div id="frind_request" class="friend__tab">
+						</section>
+						<section id="frind_request" class="friend__tab">
 							<h4>申請中</h4>
-						</div>
-						<div id="frind_wait" class="friend__tab">
+							<% if @my_requests.exists? %>
+								<% @my_requests.each do |friend| %>
+									<%= attachment_image_tag friend.friend.user, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
+									<%= link_to friend.friend.name, users_user_path(friend.friend),class: "sidebar__profile__name" %>
+									<%= friend.friend.introduction %>
+								<% end %>
+							<% else %>
+								<p class="friend__empty">申請中のフレンドリクエストはありません。</p>
+							<% end %>
+						</section>
+						<section id="frind_wait" class="friend__tab">
 							<h4>承認待ち</h4>
-						</div>
-						<div id="frind_recommend" class="friend__tab">
+							<% if @other_requests.exists? %>
+								<% @other_requests.each do |friend| %>
+									<%= attachment_image_tag friend.friend.user, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
+									<%= link_to friend.friend.name, users_user_path(friend.friend),class: "sidebar__profile__name" %>
+									<%= friend.friend.introduction %>
+								<% end %>
+							<% else %>
+								<p class="friend__empty">フレンドリクエストはありません。</p>
+							<% end %>
+						</section>
+						<section id="frind_recommend" class="friend__tab">
 							<h4>オススメ</h4>
-						</div>
+						</section>
 					</div>
-				</section>
+				</div>
 			</div>
 		</div>
 	</div>
