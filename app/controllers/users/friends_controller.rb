@@ -27,6 +27,9 @@ class Users::FriendsController < ApplicationController
   end
   def destroy
   	request = current_user.refuse(user)
+  	if request.nil?
+  		request = Friend.find(params[:id])
+  	end
   	if request.destroy
   	  	flash[:success] = '削除しました。'
       	redirect_to users_user_friends_path(current_user)
