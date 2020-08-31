@@ -6,9 +6,8 @@
 	<% if user == current_user %>
 	<%= link_to "プロフィールを編集する", edit_users_user_path(user), class: "btn mybtn__btn", data: {"turbolinks"=>false} %>
 	<% elsif user != current_user %>
-	<%= link_to "作品をオススメする", new_users_recommendation, class: "btn mybtn__btn", data: {"turbolinks"=>false} %>
-	<% else %>
-	<%= link_to "友達申請を送る", users_user_friend_requests(user), class: "btn mybtn__btn" %>
+	<%= link_to "作品をオススメする", new_users_recommendation_path(user), class: "btn mybtn__btn", data: {"turbolinks"=>false} %>
+	<%= link_to "友達申請を送る", users_user_friends_path(user), method: :post, class: "btn mybtn__btn" %>
 	<% end %>
 </div>
 <div class="myname col-xs-offset-2">
