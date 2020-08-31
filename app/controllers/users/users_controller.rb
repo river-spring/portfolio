@@ -1,6 +1,10 @@
 class Users::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @friend = Friend.find_by(user_id: params[:id],friend_id: current_user.id)
+    if @friend.nil?
+      @friend = Friend.find_by(user_id: current_user.id, friend_id: params[:id])
+    end
     @shelves = Shelf.where(user_id: @user.id)
   end
 

@@ -56,6 +56,13 @@ $subcolor: #b0c4de;
 			opacity: 0.8;
 		}
 	}
+	&__friend {
+		color: $backcolor;
+		background-color: $pointcolor;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
 }
 .myname {
 	padding-top: 60px;

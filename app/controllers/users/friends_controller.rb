@@ -19,10 +19,10 @@ class Users::FriendsController < ApplicationController
   	request = Friend.find(params[:id])
   	if request.update(friend_flag: "true")
   		flash[:success] = "フレンドリクエストを許可しました。"
-  		redirect_to users_user_path(current_user)
+  		redirect_back(fallback_location: root_path)
   	else
   		flash.now[:alert] = "エラーが発生しました。"
-        redirect_to users_user_path(current_user)
+        redirect_back(fallback_location: root_path)
   	end
   end
   def destroy
@@ -32,10 +32,10 @@ class Users::FriendsController < ApplicationController
   	end
   	if request.destroy
   	  	flash[:success] = '削除しました。'
-      	redirect_to users_user_friends_path(current_user)
+      	redirect_back(fallback_location: root_path)
     else
       	flash.now[:alert] = '削除に失敗しました'
-      	redirect_to users_user_friends_path(current_user)
+      	redirect_back(fallback_location: root_path)
     end
   end
   private

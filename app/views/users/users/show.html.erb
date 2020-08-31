@@ -3,7 +3,7 @@
 		<div class="row">
 			<%= render 'sidebar', user: current_user %><!-- サイドバー -->
 			<div class="mypage col-xs-8">
-				<%= render 'my_image', user: @user %><!-- マイページ画像 -->
+				<%= render 'my_image', user: @user, friend: @friend %><!-- マイページ画像 -->
 				<p class="col-xs-offset-3"><%= @user.introduction %></p>
 				<div class="mypage__shelves col-xs-offset-3">
 					<% if current_user %>
