@@ -10,7 +10,6 @@ $(document).on('turbolinks:load', function() {
 		$("#friend_tab_contents .friend__tab").hide();
 		$("#friend__tab_menu .active").removeClass("active");
 		$(this).addClass("active");
-		//console.log(`#${$(this).data('target')}`)
 		$(`#${$(this).data('target')}`).show();
 		event.preventDefault();
 	});

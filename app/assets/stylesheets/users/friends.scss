@@ -11,6 +11,8 @@ $subcolor: #b0c4de;
 	margin: 50px 0;
 	&__link {
 		margin: 10px 0;
+		padding-bottom: 10px;
+		border-bottom: solid 1px $subcolor;
 		&:hover {
 			opacity: 0.8;
 		}
@@ -33,4 +35,12 @@ $subcolor: #b0c4de;
 		padding-top: 20px;
 		text-align: center;
 	}
+}
+/*タブメニューに関するCSS*/
+#friend__tab_menu a {
+	color: $subcolor;
+}
+.active {
+	color: $textcolor !important;
+	border-bottom: solid 3px !important;
 }
