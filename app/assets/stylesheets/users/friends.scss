@@ -9,6 +9,26 @@ $subcolor: #b0c4de;
 /*フレンド一覧のCSS*/
 .friend {
 	margin: 50px 0;
+	&__link {
+		margin: 10px 0;
+		&:hover {
+			opacity: 0.8;
+		}
+		&__text {
+			color: $textcolor;
+			width: 50%;
+			&__name {
+				font-size: 20px;
+				font-weight: bold;
+			}
+			&__user_id {
+				color: $subcolor;
+			}
+		}
+		&__box {
+			color: $textcolor;
+		}
+	}
 	&__empty {
 		padding-top: 20px;
 		text-align: center;

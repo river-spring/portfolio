@@ -17,15 +17,49 @@
 							<% if @friends.exists? %>
 								<% @friends.each do |friend| %>
 									<% if friend.friend == current_user %>
-										<%= attachment_image_tag friend.user, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
-										<%= link_to friend.user.name, users_user_path(friend.user),class: "sidebar__profile__name" %>
-										<%= friend.user.introduction %>
-										<%= link_to "取消", users_user_friend_path(user_id: friend.friend.id, id: friend.id), method: :delete, class: "btn btn-danger btn-xs" %>
+										<div class="col-xs-10">
+											<%= link_to "フレンド", users_user_friend_path(user_id: friend.friend.id, id: friend.id), method: :delete, class: "btn btn-info btn-sm col-xs-offset-10 friend_btn" %>
+											<%= link_to users_user_path(friend.user), class: "friend__link" do %>
+												<div class="col-xs-2">
+													<%= attachment_image_tag friend.user, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
+												</div>
+												<div class="col-xs-10">
+													<p class="friend__link__text">
+														<span class="friend__link__text__name">
+															<%= friend.user.name %>
+														</span><br>
+														<span class="friend__link__text__user_id">
+															<%= friend.user.user_id %>
+														</span>
+													</p>
+													<p class="friend__link__box">
+														<%= friend.user.introduction %>
+													</p>
+												</div>
+											<% end %>
+										</div>
 									<% else %>
-										<%= attachment_image_tag friend.friend, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
-										<%= link_to friend.friend.name, users_user_path(friend.friend),class: "sidebar__profile__name" %>
-										<%= friend.friend.introduction %>
-										<%= link_to "取消", users_user_friend_path(user_id: current_user.id, id: friend.id), method: :delete, class: "btn btn-danger btn-xs" %>
+										<div class="col-xs-10">
+											<%= link_to "フレンド", users_user_friend_path(user_id: current_user.id, id: friend.id), method: :delete, class: "btn btn-info btn-sm col-xs-offset-10 friend_btn" %>
+											<%= link_to users_user_path(friend.friend), class: "friend__link" do %>
+												<div class="col-xs-2">
+													<%= attachment_image_tag friend.friend, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
+												</div>
+												<div class="col-xs-10">
+													<p class="friend__link__text">
+														<span class="friend__link__text__name">
+															<%= friend.friend.name %>
+														</span><br>
+														<span class="friend__link__text__user_id">
+															<%= friend.friend.user_id %>
+														</span>
+													</p>
+													<p class="friend__link__box">
+														<%= friend.friend.introduction %>
+													</p>
+												</div>
+											<% end %>
+										</div>
 									<% end %>
 								<% end %>
 							<% else %>
@@ -37,7 +71,8 @@
 							<% if @my_requests.exists? %>
 								<% @my_requests.each do |friend| %>
 									<%= attachment_image_tag friend.friend, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
-									<%= link_to friend.friend.name, users_user_path(friend.friend),class: "sidebar__profile__name" %>
+									<%= link_to friend.friend.name, users_user_path(friend.friend),class: "" %>
+									<%= friend.friend.user_id %>
 									<%= friend.friend.introduction %>
 									<%= link_to "取消", users_user_friend_path(user_id: friend.friend.id, id: friend.id), method: :delete, class: "btn btn-danger btn-xs" %>
 								<% end %>
@@ -49,11 +84,30 @@
 							<h4>承認待ち</h4>
 							<% if @other_requests.exists? %>
 								<% @other_requests.each do |friend| %>
-									<%= attachment_image_tag friend.friend, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
-									<%= link_to friend.user.name, users_user_path(friend.user),class: "sidebar__profile__name" %>
-									<%= friend.friend.introduction %>
-									<%= link_to "許可", users_user_friend_path(user_id: current_user.id, id: friend.id), method: :patch, class: "btn btn-info btn-xs" %>
-									<%= link_to "取消", users_user_friend_path(user_id: current_user.id, id: friend.id), method: :delete, class: "btn btn-danger btn-xs" %>
+									<div class="friend__link">
+										<%= link_to users_user_path(friend.user) do%>
+											<div class="col-xs-2">
+												<%= attachment_image_tag friend.friend, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
+											</div>
+											<div class="col-xs-10">
+												<p class="friend__link__text">
+													<span class="friend__link__text__name">
+														<%= friend.user.name %>
+													</span><br>
+													<span class="friend__link__text__user_id">
+														<%= friend.user.user_id %>
+													</span>
+												</p>
+												<p class="friend__link__box">
+													<%= friend.friend.introduction %>
+												</p>
+											</div>
+										<% end %>
+										<span class="col-xs-offset-10">
+											<%= link_to "許可", users_user_friend_path(user_id: current_user.id, id: friend.id), method: :patch, class: "btn btn-info btn-xs" %>
+											<%= link_to "取消", users_user_friend_path(user_id: current_user.id, id: friend.id), method: :delete, class: "btn btn-danger btn-xs" %>
+										</span>
+									</div>
 								<% end %>
 							<% else %>
 								<p class="friend__empty">フレンドリクエストはありません。</p>
