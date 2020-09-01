@@ -16,6 +16,11 @@ $subcolor: #b0c4de;
 		&:hover {
 			opacity: 0.8;
 		}
+		&__btn {
+			z-index: 5;
+			position: absolute;
+			right: 30px;
+		}
 		&__text {
 			color: $textcolor;
 			width: 50%;

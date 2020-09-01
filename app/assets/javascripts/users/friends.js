@@ -14,9 +14,13 @@ $(document).on('turbolinks:load', function() {
 		event.preventDefault();
 	});
 	$(function(){
-		$('.friend_btn').hover(function(){
-			$('this').text('取消');
-			$('this').css({'background-color': '#d9534f'});
+		$('.friend_btn').mouseover(function(){
+			$(this).text('取り消し');
+			$(this).css({'background-color': '#d9534f','border-color': '#d9534f'});
+		});
+		$('.friend_btn').mouseout(function(){
+			$(this).text('フレンド');
+			$(this).css({'background-color': '#5bc0db','border-color': '#5bc0db'});
 		});
 	});
 });

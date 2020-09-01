@@ -18,7 +18,7 @@
 								<% @friends.each do |friend| %>
 									<% if friend.friend == current_user %>
 										<div class="col-xs-12 friend__link">
-											<%= link_to "フレンド", users_user_friend_path(user_id: friend.friend.id, id: friend.id), method: :delete, class: "btn btn-info btn-sm col-xs-offset-10 friend_btn" %>
+											<%= link_to "フレンド", users_user_friend_path(user_id: friend.friend.id, id: friend.id), method: :delete, class: "btn btn-info btn-sm col-xs-offset-10 friend_btn friend__link__btn" %>
 											<%= link_to users_user_path(friend.user), class: "friend__link" do %>
 												<div class="col-xs-2">
 													<%= attachment_image_tag friend.user, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
@@ -40,7 +40,7 @@
 										</div>
 									<% else %>
 										<div class="col-xs-12 friend__link">
-											<%= link_to "フレンド", users_user_friend_path(user_id: current_user.id, id: friend.id), method: :delete, class: "btn btn-info btn-sm col-xs-offset-10 friend_btn" %>
+											<%= link_to "フレンド", users_user_friend_path(user_id: current_user.id, id: friend.id), method: :delete, class: "btn btn-info btn-sm col-xs-offset-10 friend__link__btn friend_btn" %>
 											<%= link_to users_user_path(friend.friend) do %>
 												<div class="col-xs-2">
 													<%= attachment_image_tag friend.friend, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>

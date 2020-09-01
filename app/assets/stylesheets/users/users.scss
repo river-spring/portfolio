@@ -93,14 +93,18 @@ $subcolor: #b0c4de;
 		&__shelf {
 			margin-top: 30px;
 			border: solid 1px $subcolor;
+			border-bottom: none;
 			&__box {
-				&:nth-child(n+2) {
-					border-top: solid 1px $subcolor;
+				border-bottom: solid 1px $subcolor;
+				&:hover {
+					opacity: 0.8;
 				}
 				&__title {
+					color: $textcolor;
 					padding: 0 10px;
 				}
-				&__text {
+				&__outline {
+					color: $textcolor;
 					padding: 0 10px;
 				}
 			}

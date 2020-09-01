@@ -15,8 +15,10 @@
 						<div class="mypage__shelves__shelf">
 							<% @shelves.each do |shelf| %>
 								<div class="mypage__shelves__shelf__box">
-									<h4 class="mypage__shelves__shelf__box__title"><%= link_to shelf.name, users_shelf_path(shelf) %></h4>
-									<p class="mypage__shelves__shelf__box__text"><%= shelf.outline %></p>
+									<%= link_to users_shelf_path(shelf) do %>
+										<h4 class="mypage__shelves__shelf__box__title"><%= shelf.name %></h4>
+										<p class="mypage__shelves__shelf__box__outline"><%= shelf.outline %></p>
+									<% end %>
 								</div>
 							<% end %>
 						</div>

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
         resources :comments, only: [ :create, :destroy]
       end
     end
-    resources :groups, only: [ :index, :new, :create, :edit, :update, :destroy]
+    resources :groups
     resources :recommendations, only: [ :show, :new, :create, :destroy]
   end
   namespace :admins do

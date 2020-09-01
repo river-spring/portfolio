@@ -7,12 +7,31 @@ $pointcolor: #f1d145;
 $textcolor: #ffffff;
 $subcolor: #b0c4de;
 /*グループ一覧に関するCSS*/
-.groups {
+.group_index {
 	&__btn {
 		color: $backcolor;
 		background-color: $pointcolor;
 		&:hover {
 			opacity: 0.8;
+		}
+	}
+	&__list {
+		margin-top: 30px;
+		border: solid 1px $subcolor;
+		border-bottom: none;
+		&__box {
+			border-bottom: solid 1px $subcolor;
+			&:hover {
+				opacity: 0.8;
+			}
+			&__name {
+				padding: 0 10px;
+				color: $textcolor;
+			}
+			&__outline {
+				padding: 0 10px;
+				color: $textcolor;
+			}
 		}
 	}
 	&__empty {
