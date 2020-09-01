@@ -1,2 +1,36 @@
-<h1>Users::Groups#new</h1>
-<p>Find me in app/views/users/groups/new.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render '/users/users/sidebar', user: current_user %><!-- サイドバー -->
+			<section class="new_group">
+				<h2>New Group</h2>
+				<%= form_with(model: @group, url: users_groups_path, local: true) do |f| %>
+					<div class="col-xs-3">
+						<%= f.label :グループの画像 %>
+						<%= attachment_image_tag @group, :image, fallback: "group.png", size:"300x200", class: " img-rounded new-group-img" %>
+						<%= f.attachment_field :image, id: "new-group-image", class: "new-shelf__attachment" %>
+					</div>
+					<div class="col-xs-offset-2 col-xs-4">
+						<%= f.label :グループ名 %>
+						<%= f.text_field :name, class: "form-control new-shelf__text" %>
+						<p><%= f.label :グループ概要 %>（300文字以内）</p>
+						<%= f.text_area :outline, class: "form-control new-shelf__text" %>
+						<%= f.label :グループメンバー選択 %>
+						<div>
+							<% @friends.each do |friend| %>
+								<% if friend.user == current_user %>
+									<%= attachment_image_tag friend.friend, :profile_image, fallback: "noimage.png", size:"30x30", class: "img-circle" %>
+									<%= friend.friend.name %>
+								<% else %>
+									<%= attachment_image_tag friend.user, :profile_image, fallback: "noimage.png", size:"30x30", class: "img-circle" %>
+									<%= friend.user.name %>
+								<% end %>
+							<% end %>
+						</div>
+						<%= f.submit '作成する', class: "btn new-shelf__submit col-xs-offset-10" %>
+					</div>
+				<% end %>
+			</section>
+		</div>
+	</div>
+</div>

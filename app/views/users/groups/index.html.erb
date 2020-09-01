@@ -1,2 +1,19 @@
-<h1>Users::Groups#index</h1>
-<p>Find me in app/views/users/groups/index.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render '/users/users/sidebar', user: current_user %><!-- サイドバー -->
+			<div class="col-xs-8 groups" id="group_index">
+				<%= render '/users/users/my_image', user: current_user %><!-- マイページ画像 -->
+				<%= link_to "New Group", new_users_group_path, class: "btn groups__btn  col-xs-offset-11" %>
+				<% if @groups.exists? %>
+					<% @groups.each do |group| %>
+						<%= group.group.name %>
+						<%= group.group.outline %>
+					<% end %>
+				<% else %>
+					<p class="groups__empty">参加しているグループはありません。</p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

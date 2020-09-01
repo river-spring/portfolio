@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
          acts_as_paranoid
 
+         validates :user_id, uniqueness: true, presence: true
+
          has_many :friends
          has_many :requests, through: :friends, source: :friend
          has_many :reverse_of_friends, class_name: 'Friend', foreign_key: 'friend_id'

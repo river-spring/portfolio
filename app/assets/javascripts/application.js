@@ -56,3 +56,13 @@ $(function(){
 		reader.readAsDataURL(e.target.files[0]);
 	});
 });
+// グループ新規作成画面のプレビュー
+$(function(){
+	$('#new-group-image').on('change', function(e) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+		$(".new-group-img").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	});
+});

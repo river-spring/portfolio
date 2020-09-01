@@ -1,2 +1,19 @@
-<h1>Searchs#search</h1>
-<p>Find me in app/views/searchs/search.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render '/users/users/sidebar', user: current_user %><!-- サイドバー -->
+			<section class="search col-xs-8">
+				<h2>ユーザー検索</h2>
+				<%= form_tag(search_path, method: :get) do %>
+					<%= select_tag :category,options_for_select([ ['---選択してください---', ''],['ユーザー名', 'name'], ['ユーザーID', 'id']]), class: "btn btn-default dropdown-toggle new-production__sarch__select" %>
+					<div class="input-group">
+	  						<%= text_field_tag :word, "", class: "form-control" %>
+	  						<span class="input-group-btn">
+	  						<%= submit_tag "検索", class: "btn btn-default" %>
+	  						</span>
+  						</div>
+				<% end %>
+			</section>
+		</div>
+	</div>
+</div>

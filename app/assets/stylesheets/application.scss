@@ -41,7 +41,7 @@ body {
 	min-height: 100vh;
 }
 .body {
-	background-color: $backcolor;
+	background: linear-gradient(to bottom, $backcolor 70%, #000000);
 	color: $textcolor;
 	padding: 50px;
 	height: auto;
