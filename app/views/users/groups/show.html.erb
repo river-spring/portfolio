@@ -2,8 +2,47 @@
 	<div class="container">
 		<div class="row">
 			<%= render '/users/users/sidebar', user: current_user %><!-- サイドバー -->
-			<div class="col-xs-8 group_index">
-			</div>
+			<section class="col-xs-8 col-xs-offset-1 group_show">
+				<%= attachment_image_tag @group, :image, fallback: "group.png", class: "shelf__image img-rounded" %>
+				<h2><%= @group.name %></h2>
+				<p><%= @group.outline %></p>
+				<%= link_to "", edit_users_group_path(@group), class: "glyphicon glyphicon-cog group_show__edit_btn col-xs-offset-11", data: {"turbolinks"=>false}  %>
+				<ul class="nav nav-tabs nav-justified" id="group_tab_menu">
+					<li><%= link_to "棚一覧",  "javascript:void(0)", data: { target: "group_shelves" }, class: "active" %></li>
+					<li><%= link_to "メンバー一覧",   "javascript:void(0)" , data: { target: "group_member" }%></li>
+				</ul>
+				<div id="group_tab_contents">
+					<div id="group_shelves" class="group_show__tab">
+						<%= link_to "",new_users_shelf_path(group_id: @group.id), class: "glyphicon glyphicon-plus-sign group_show__btn col-xs-offset-11", data: {"turbolinks"=>false} %>
+						<% if @shelves.exists? %>
+							<div class="group_show__shelf">
+								<% @shelves.each do |shelf| %>
+									<div class="group_show__shelf__box">
+										<%= link_to users_shelf_path(shelf) do %>
+											<h4 class="group_show__shelf__box__title"><%= shelf.name %></h4>
+											<p class="group_show__shelf__box__outline"><%= shelf.outline %></p>
+										<% end %>
+									</div>
+								<% end %>
+							</div>
+						<% else %>
+							<p class="group_show__empty">まだ棚は作成されていません。</p>
+						<% end %>
+					</div>
+					<div id="group_member" class="group_show__tab">
+						<div class="group_show__members">
+							<% @members.each do |member| %>
+								<div class="group_show__members__box">
+									<%= link_to users_user_path(member.user) do %>
+										<%= attachment_image_tag member.user, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
+										<span class="group_show__members__box__name"><%= member.user.name %></span>
+									<% end %>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</section>
 		</div>
 	</div>
 </div>

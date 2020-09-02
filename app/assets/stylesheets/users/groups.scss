@@ -39,3 +39,36 @@ $subcolor: #b0c4de;
 		padding-top: 30px;
 	}
 }
+
+/*グループ詳細画面に関するCSS*/
+.group_show {
+	&__edit_btn {
+		color: $textcolor;
+		font-size: 20px;
+	}
+	&__btn {
+			color: $pointcolor;
+			font-size: 50px;
+		}
+	&__shelf {
+		padding-top: 30px;
+	}
+	&__empty {
+		padding-top: 30px;
+		text-align: center;
+	}
+	&__members {
+		border-top: solid 1px $subcolor;
+		&__box {
+			padding: 10px 0;
+			border-bottom: solid 1px $subcolor;
+			&:hover {
+				opacity: 0.8;
+			}
+			&__name {
+				color: $textcolor;
+				padding-left: 10px;
+			}
+		}
+	}
+}

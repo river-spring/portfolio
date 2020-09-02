@@ -20,7 +20,7 @@ class User < ApplicationRecord
          has_many :requests, through: :friends, source: :friend
          has_many :reverse_of_friends, class_name: 'Friend', foreign_key: 'friend_id'
          has_many :my_friends, through: :reverse_of_friends, source: :user
-
+         # 友達申請機能
          def request(other_user)
             unless self == other_user
                 self.friends.find_or_create_by(friend_id: other_user.id)
@@ -35,5 +35,12 @@ class User < ApplicationRecord
          def request?(other_user)
             self.requests.include?(other_user)
          end
-
+         # ユーザー検索機能
+         def User.search(user, word)
+            if user == "name"
+                User.where('name LIKE ?', "%#{word}%")
+            else
+                User.where('user_id LIKE ?', "%#{word}%")
+            end
+         end
 end

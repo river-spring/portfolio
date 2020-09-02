@@ -10,11 +10,20 @@ class Users::ShelvesController < ApplicationController
 
   def create
     @shelf = Shelf.new(shelf_params)
-    @shelf.user_id = current_user.id
-    if @shelf.save
-      redirect_to users_shelf_path(@shelf.id)
+    byebug
+    if @shelf.group_id.nil?
+      @shelf.user_id = current_user.id
+      if @shelf.save
+        redirect_to users_shelf_path(@shelf.id)
+      else
+        render :new
+      end
     else
-      render :new
+      if @shelf.save
+        redirect_to users_shelf_path(@shelf.id)
+      else
+        render :new
+      end
     end
   end
 
@@ -39,6 +48,6 @@ class Users::ShelvesController < ApplicationController
   end
   private
   def shelf_params
-    params.require(:shelf).permit(:name, :shelf_image, :outline)
+    params.require(:shelf).permit(:name, :shelf_image, :outline, :group_id)
   end
 end

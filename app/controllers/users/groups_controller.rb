@@ -3,6 +3,9 @@ class Users::GroupsController < ApplicationController
     @groups = GroupUser.where(user_id: current_user.id)
   end
   def show
+    @group = Group.find(params[:id])
+    @shelves = Shelf.where(group_id: params[:id])
+    @members = GroupUser.where(group_id: params[:id])
   end
 
   def new

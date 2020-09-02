@@ -15,6 +15,7 @@
 						<%= f.text_field :name, class: "form-control new-shelf__text" %>
 						<p><%= f.label :棚の概要 %>（300文字以内）</p>
 						<%= f.text_area :outline, class: "form-control new-shelf__text" %>
+						<%= f.hidden_field :group_id, value: params[:group_id] %>
 						<%= f.submit '作成する', class: "btn new-shelf__submit col-xs-offset-10" %>
 					</div>
 				<% end %>

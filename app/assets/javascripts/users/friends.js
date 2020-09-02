@@ -3,7 +3,7 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on('turbolinks:load', function() {
-	// フレンドページタブメニューに関するCSS
+	// フレンドページタブメニューに関するアクション
 	$('#friend_tab_contents .friend__tab[id != "frinds_list"]').hide();
 
 	$('#friend__tab_menu a').on('click', function(event) {
@@ -13,6 +13,7 @@ $(document).on('turbolinks:load', function() {
 		$(`#${$(this).data('target')}`).show();
 		event.preventDefault();
 	});
+	// フレンド取消ボタンに関するアクション
 	$(function(){
 		$('.friend_btn').mouseover(function(){
 			$(this).text('取り消し');
