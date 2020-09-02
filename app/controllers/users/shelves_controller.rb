@@ -1,6 +1,7 @@
 class Users::ShelvesController < ApplicationController
   def show
     @shelf = Shelf.find(params[:id])
+    @group_users = GroupUser.where(group_id: @shelf.group_id).pluck(:user_id)
     @productions = Production.where(shelf_id: @shelf.id)
   end
 

@@ -72,3 +72,46 @@ $subcolor: #b0c4de;
 		}
 	}
 }
+/*グループ作成画面のCSS*/
+.new-group {
+	&__attachment {
+		margin-top: 10px;
+	}
+	&__text {
+		margin-bottom: 10px;
+	}
+	&__member {
+		padding: 5px;
+	}
+	&__submit {
+		margin-top: 100px;
+		color: $backcolor;
+		background-color: $pointcolor;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+/*グループ編集画面のCSS*/
+.edit-group {
+	&__attachment {
+		margin-top: 10px;
+	}
+	&__text {
+		margin-bottom: 10px;
+	}
+	&__member {
+		padding: 5px;
+	}
+	&__submit {
+		margin-top: 100px;
+		color: $backcolor;
+		background-color: $pointcolor;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+	&__btn {
+		margin-top: 40px;
+	}
+}

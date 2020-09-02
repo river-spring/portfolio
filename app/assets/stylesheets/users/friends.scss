@@ -50,5 +50,9 @@ $subcolor: #b0c4de;
 }
 .active {
 	color: $textcolor !important;
+	background-color: $backcolor !important;
 	border-bottom: solid 3px !important;
+	&:hover {
+		border: none;
+	}
 }

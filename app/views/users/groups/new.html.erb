@@ -12,24 +12,26 @@
 					</div>
 					<div class="col-xs-offset-2 col-xs-4">
 						<%= f.label :グループ名 %>
-						<%= f.text_field :name, class: "form-control new-shelf__text" %>
+						<%= f.text_field :name, class: "form-control new-group__text" %>
 						<p><%= f.label :グループ概要 %>（300文字以内）</p>
-						<%= f.text_area :outline, class: "form-control new-shelf__text" %>
+						<%= f.text_area :outline, class: "form-control new-group__text" %>
 						<%= f.label :グループメンバー選択 %>
 						<div>
 							<% @friends.each do |friend| %>
-								<% if friend.user == current_user %>
-									<%= f.check_box :group_users,{multiple: true, checked: false}, friend.friend.id, nil %>
-									<%= attachment_image_tag friend.friend, :profile_image, fallback: "noimage.png", size:"30x30", class: "img-circle" %>
-									<%= friend.friend.name %>
-								<% else %>
-									<%= f.check_box :group_users,{multiple: true, checked: false}, friend.user.id, nil %>
-									<%= attachment_image_tag friend.user, :profile_image, fallback: "noimage.png", size:"30x30", class: "img-circle" %>
-									<%= friend.user.name %>
-								<% end %>
+								<div class="new-group__member">
+									<% if friend.user == current_user %>
+										<%= f.check_box :group_users,{multiple: true, checked: false}, friend.friend.id, nil %>
+										<%= attachment_image_tag friend.friend, :profile_image, fallback: "noimage.png", size:"30x30", class: "img-circle" %>
+										<%= friend.friend.name %>
+									<% else %>
+										<%= f.check_box :group_users,{multiple: true, checked: false}, friend.user.id, nil %>
+										<%= attachment_image_tag friend.user, :profile_image, fallback: "noimage.png", size:"30x30", class: "img-circle" %>
+										<%= friend.user.name %>
+									<% end %>
+								</div>
 							<% end %>
 						</div>
-						<%= f.submit '作成する', class: "btn new-shelf__submit col-xs-offset-10" %>
+						<%= f.submit '作成する', class: "btn new-group__submit col-xs-offset-10" %>
 					</div>
 				<% end %>
 			</section>

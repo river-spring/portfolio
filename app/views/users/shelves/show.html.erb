@@ -11,6 +11,8 @@
 				<p class="col-xs-9"><%= @shelf.outline %></p>
 				<% if @shelf.user_id == current_user.id %>
 					<%= link_to "作品を追加", new_users_shelf_production_path(@shelf), class: "btn shelf__add col-xs-offset-8", data: {"turbolinks"=>false} %>
+				<% elsif @group_users.include?(current_user.id) %>
+					<%= link_to "作品を追加", new_users_shelf_production_path(@shelf), class: "btn shelf__add col-xs-offset-8", data: {"turbolinks"=>false} %>
 				<% end %>
 				<% if Production.find_by(shelf_id: params[:id]).nil? %>
 					<p class="shelf__empty col-xs-offset-4">棚は空です。</p>

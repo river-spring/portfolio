@@ -1,2 +1,34 @@
-<h1>Users::Groups#edit</h1>
-<p>Find me in app/views/users/groups/edit.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render '/users/users/sidebar', user: current_user %><!-- サイドバー -->
+			<section class="edit_group">
+				<h2>New Group</h2>
+				<%= form_with(model: @group, url: users_group_path, local: true) do |f| %>
+					<div class="col-xs-3">
+						<%= f.label :グループの画像 %>
+						<%= attachment_image_tag @group, :image, fallback: "group.png", size:"300x200", class: " img-rounded edit-group-img" %>
+						<%= f.attachment_field :image, id: "edit-group-image", class: "edit-group__attachment" %>
+					</div>
+					<div class="col-xs-offset-2 col-xs-4">
+						<%= f.label :グループ名 %>
+						<%= f.text_field :name, class: "form-control edit-group__text" %>
+						<p><%= f.label :グループ概要 %>（300文字以内）</p>
+						<%= f.text_area :outline, class: "form-control edit-group__text" %>
+						<%= f.label :グループメンバー選択 %>
+						<div>
+							<% @friends.each do |friend| %>
+								<%= f.check_box :group_users,{multiple: true, checked: false}, friend.id, nil %>
+								<%= attachment_image_tag friend, :profile_image, fallback: "noimage.png", size:"30x30", class: "img-circle" %>
+								<%= friend.name %>
+								</div>
+							<% end %>
+						</div>
+						<%= f.submit '変更を保存する', class: "btn edit-group__submit col-xs-offset-10" %>
+						<%= link_to '解散する' , users_group_path(@group), method: :delete, class: "btn btn-danger edit-group__btn col-xs-offset-10" %>
+					</div>
+				<% end %>
+			</section>
+		</div>
+	</div>
+</div>

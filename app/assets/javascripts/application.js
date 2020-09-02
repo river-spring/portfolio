@@ -66,3 +66,13 @@ $(function(){
 		reader.readAsDataURL(e.target.files[0]);
 	});
 });
+// グループ編集画面のプレビュー
+$(function(){
+	$('#edit-group-image').on('change', function(e) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+		$(".edit-group-img").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	});
+});
