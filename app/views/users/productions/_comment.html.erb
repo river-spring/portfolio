@@ -3,7 +3,11 @@
 		<div id="comment-<%= comment.id %>" class="row production_comments__box">
 			<div class="col-xs-2">
 				<%= attachment_image_tag comment.user, :profile_image, fallback: "noimage.png", size:"50x50", class: "img-circle" %>
-				<%= comment.user.name %>
+				<% if comment.user == current_user %>
+				 <%= comment.user.name %>
+				<% else %>
+				 <%= link_to comment.user.name, users_user_path(comment.user), class: "production_comments__box__link" %>
+				<% end %>
 			</div>
 			<div class="col-xs-9">
 				<%= comment.comment %>
@@ -15,11 +19,13 @@
 		</div>
 	<% end %>
 	<div class="comment_form">
-	<p>コメント追加</p>
-	<%= form_with(model: [shelf, production, comment],url: users_shelf_production_comments_path(shelf_id: shelf.id, production_id: production.id), remote: true) do |f| %>
-		<%= f.text_area :comment, class: "form-control", id: "comment_textarea" %>
-		<%= f.submit "送信",  class: "btn btn-info comment_form__btn col-xs-offset-11" %>
-	<% end %>
-</div>
+		<% if shelf.user_id == current_user.id || group_users.include?(current_user.id) %>
+			<p class="comment_form__title">コメント</p>
+			<%= form_with(model: [shelf, production, comment],url: users_shelf_production_comments_path(shelf_id: shelf.id, production_id: production.id), remote: true) do |f| %>
+				<%= f.text_area :comment, class: "form-control", id: "comment_textarea" %>
+				<%= f.submit "送信",  class: "btn btn-info comment_form__btn col-xs-offset-11" %>
+			<% end %>
+		<% end %>
+	</div>
 </div>
 

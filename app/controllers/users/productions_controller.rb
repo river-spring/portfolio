@@ -2,6 +2,7 @@ class Users::ProductionsController < ApplicationController
   def show
     @production = Production.find(params[:id])
     @shelf = Shelf.find(params[:shelf_id])
+    @group_users = GroupUser.where(group_id: @shelf.group_id).pluck(:user_id)
     @comment = Comment.new
   end
 

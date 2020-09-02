@@ -10,7 +10,9 @@
 				<% if @shelf.user_id == current_user.id %>
 					<%= link_to "棚から削除する", users_shelf_production_path(@shelf), method: :delete, remote: true, class: "btn btn-danger col-xs-offset-10" %>
 				<% end %>
-				<%= render 'comment', comment: @comment, production: @production, shelf: @shelf %><!-- コメント投稿機能 -->
 			</section>
+			<div  class="col-xs-8 col-xs-offset-4">
+				<%= render 'comment', comment: @comment, production: @production, shelf: @shelf, group_users: @group_users %><!-- コメント投稿機能 -->
+			</div>
 		</div>
 	</div>

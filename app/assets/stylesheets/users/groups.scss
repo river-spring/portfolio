@@ -51,7 +51,23 @@ $subcolor: #b0c4de;
 			font-size: 50px;
 		}
 	&__shelf {
-		padding-top: 30px;
+		margin-top: 30px;
+		padding-top: 10px;
+		border: solid 1px $subcolor;
+		border-bottom: none;
+		&__box {
+			border-bottom: solid 1px $subcolor;
+			padding: 0 10px;
+			&:hover {
+				opacity: 0.8;
+			}
+			&__title {
+				color: $textcolor;
+			}
+			&__outline {
+				color: $textcolor;
+			}
+		}
 	}
 	&__empty {
 		padding-top: 30px;
