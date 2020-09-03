@@ -5,7 +5,7 @@
 			<section class="col-xs-7 col-xs-offset-2 production_search">
 				<h2>オススメ作成</h2>
 				<!-- 作品検索 -->
-					<%= form_tag( new_users_recommendation_path(@shelf),:method => 'get') do %>
+					<%= form_tag( new_users_user_recommendation_path(params[:user_id]),:method => 'get') do %>
   						<%= select_tag :genre,options_for_select([ ['---選択してください---', ''],['ドラマ/アニメ', 'tv'], ['映画', 'movie']]), class: "btn btn-default dropdown-toggle production_search__form" %>
   						<div class="input-group">
 	  						<%= text_field_tag :title, "", class: "form-control" %>
@@ -28,7 +28,7 @@
 								<div class="col-xs-12 production_search__results__box__outline">
 									<%= production["overview"] %>
 								</div>
-								<%=link_to "オススメ！",users_recommendations_path(title: production["name"],outline: production["overview"],image_id: "https://image.tmdb.org/t/p/w185#{production['poster_path']}", release_date: production["first_air_date"]), method: :post, class: "btn btn-info" %>
+								<%=link_to "オススメ！",users_user_recommendations_path(params[:user_id], title: production["name"], outline: production["overview"], image_id: "https://image.tmdb.org/t/p/w185#{production['poster_path']}", release_date: production["first_air_date"]), method: :post, class: "btn btn-info" %>
 							</div>
 						<% end %>
 					</div>
@@ -45,7 +45,7 @@
 								<div class="col-xs-12 production_search__results__box__outline">
 									<%= production["overview"] %>
 								</div>
-								<%=link_to "オススメ！",users_recommendations_path(title: production["title"],outline: production["overview"],image_id: "https://image.tmdb.org/t/p/w185#{production['poster_path']}",release_date: production["release_date"]), method: :post, class: "btn btn-info" %>
+								<%=link_to "オススメ！", users_user_recommendations_path(params[:user_id],title: production["title"], outline: production["overview"], image_id: "https://image.tmdb.org/t/p/w185#{production['poster_path']}", release_date: production["release_date"]), method: :post, class: "btn btn-info" %>
 							</div>
 						<% end %>
 					</div>

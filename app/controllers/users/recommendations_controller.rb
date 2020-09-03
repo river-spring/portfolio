@@ -15,8 +15,15 @@ class Users::RecommendationsController < ApplicationController
   end
 
   def create
-  	recommendation = Recommendation.create!(recommendation_params)
-    redirect_to users_recommendation_path(recommendation), notice: "オススメを作成しました！"
+  	recommendation = Recommendation.new(recommendation_params)
+  	friend = Friend.find_by(user_id: params[:user_id], friend_id: current_user.id)
+  	if friend.nil?
+  		friend = Friend.find_by(user_id: current_user.id, friend_id:params[:user_id])
+  	end
+  	recommendation.friend_id = friend.id
+  	byebug
+  	recommendation.save
+    redirect_to users_user_recommendation_path(user_id: params[:user_id], id: recommendation.id), notice: "オススメを作成しました！"
   end
 
   def destroy

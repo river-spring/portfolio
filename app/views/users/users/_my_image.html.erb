@@ -12,7 +12,7 @@
 	<% elsif friend.friend == current_user && friend.friend_flag != true %>
 		<%= link_to "友達申請を許可する", users_user_friend_path(user_id: current_user.id, id: friend.id), method: :patch, class: "btn btn-info" %>
 	<% else %>
-		<%= link_to "作品をオススメする", new_users_recommendation_path(user), class: "btn mybtn__friend", data: {"turbolinks"=>false} %>
+		<%= link_to "作品をオススメする", new_users_user_recommendation_path(user), class: "btn mybtn__friend", data: {"turbolinks"=>false} %>
 	<% end %>
 </div>
 <div class="myname col-xs-offset-2">
