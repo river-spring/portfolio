@@ -2,21 +2,21 @@
 	<div class="container">
 		<div class="row">
 			<%= render 'users/users/sidebar', user: current_user %><!-- サイドバー -->
-			<section class="new-shelf">
-				<h2>New Shelf</h2>
+			<section class="new_shelf">
+				<h2 class="col-xs-offset-3">New Shelf</h2>
 				<%= form_with(model: @shelf, url: users_shelves_path, local: true) do |f| %>
-					<div class="col-xs-3">
+					<div class="col-xs-3 col-xs-offset-1">
 						<%= f.label :棚の画像 %>
 						<%= attachment_image_tag @shelf, :shelf_image, fallback: "shelf.png", size:"300x200", class: " img-rounded new-shelf-img" %>
-						<%= f.attachment_field :shelf_image, id: "new-shelf-image", class: "new-shelf__attachment" %>
+						<%= f.attachment_field :shelf_image, id: "new-shelf-image", class: "new_shelf__attachment" %>
 					</div>
-					<div class="col-xs-offset-2 col-xs-4">
-						<%= f.label :棚の名前 %>
-						<%= f.text_field :name, class: "form-control new-shelf__text" %>
-						<p><%= f.label :棚の概要 %>（300文字以内）</p>
-						<%= f.text_area :outline, class: "form-control new-shelf__text" %>
+					<div class="col-xs-offset-1 col-xs-4">
+						<span><%= f.label :棚の名前 %>(1文字以上20文字以内)</span>
+						<%= f.text_field :name, class: "form-control new_shelf__text" %>
+						<span><%= f.label :棚の概要 %>（300文字以内）</span>
+						<%= f.text_area :outline, class: "form-control new_shelf__text" %>
 						<%= f.hidden_field :group_id, value: params[:group_id] %>
-						<%= f.submit '作成する', class: "btn new-shelf__submit col-xs-offset-10" %>
+						<%= f.submit '作成する', class: "btn new_shelf__submit col-xs-offset-10" %>
 					</div>
 				<% end %>
 			</section>

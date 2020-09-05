@@ -22,6 +22,18 @@ class Users::UsersController < ApplicationController
     end
   end
 
+  def edit_password
+  end
+
+  def password_update
+   if current_user.update(password_params)
+    sign_in(current_user, bypass: true)
+    redirect_to  users_user_path(current_user)
+   else
+    render :edit_password
+   end
+  end
+
   def history
     @recommendation = Recommendation.where(user_id: current_user.id)
   end
@@ -38,5 +50,8 @@ class Users::UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :user_id, :introduction, :profile_image, :mypage_image, :email)
+  end
+  def password_params
+    params.require(:user).permit(:password, :password_confirmation)
   end
 end

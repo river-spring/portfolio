@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       resources :recommendations, only: [ :show, :new, :create, :update, :destroy]
       collection do
           get :history
+          get :edit_password
+          patch :password_update
       end
     end
     resources :shelves, only: [ :show, :new, :create, :edit, :update, :destroy] do

@@ -89,7 +89,7 @@ $subcolor: #b0c4de;
 	}
 }
 /*グループ作成画面のCSS*/
-.new-group {
+.new_group {
 	&__attachment {
 		margin-top: 10px;
 	}
@@ -97,7 +97,11 @@ $subcolor: #b0c4de;
 		margin-bottom: 10px;
 	}
 	&__member {
-		padding: 5px;
+		max-height: 300px;
+		overflow: scroll;
+		&__friend{
+			padding: 5px;
+		}
 	}
 	&__submit {
 		margin-top: 100px;
@@ -109,7 +113,7 @@ $subcolor: #b0c4de;
 	}
 }
 /*グループ編集画面のCSS*/
-.edit-group {
+.edit_group {
 	&__attachment {
 		margin-top: 10px;
 	}
@@ -117,10 +121,14 @@ $subcolor: #b0c4de;
 		margin-bottom: 10px;
 	}
 	&__member {
-		padding: 5px;
+		max-height: 300px;
+		overflow: scroll;
+		&__friend{
+			padding: 5px;
+		}
 	}
 	&__submit {
-		margin-top: 100px;
+		margin-top: 50px;
 		color: $backcolor;
 		background-color: $pointcolor;
 		&:hover {

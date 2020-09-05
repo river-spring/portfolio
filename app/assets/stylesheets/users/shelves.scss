@@ -7,7 +7,7 @@ $pointcolor: #f1d145;
 $textcolor: #ffffff;
 $subcolor: #b0c4de;
 /*棚新規作成画面のCSS*/
-.new-shelf {
+.new_shelf {
 	&__attachment {
 		margin-top: 10px;
 	}
@@ -24,7 +24,7 @@ $subcolor: #b0c4de;
 	}
 }
 /*棚編集画面のCSS*/
-.edit-shelf {
+.edit_shelf {
 	&__attachment {
 		margin-top: 10px;
 	}

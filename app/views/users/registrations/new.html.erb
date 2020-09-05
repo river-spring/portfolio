@@ -8,11 +8,11 @@
             <%= render "users/shared/error_messages", resource: resource %>
 
             <div class="field">
-              <%= f.label :表示名 %><br />
+              <span><%= f.label :表示名 %>(1文字以上20文字以内)</span><br />
               <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "sign-up__form form-control" %>
             </div>
             <div class="field">
-              <%= f.label :ユーザーID %><br />
+              <span><%= f.label :ユーザー %>ID(半角英数字5文字以上12文字以内)</span><br />
               <%= f.text_field :user_id, autofocus: true, autocomplete: "user_id", class: "sign-up__form form-control"  %>
             </div>
             <div class="field">

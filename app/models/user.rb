@@ -3,19 +3,24 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         # バリデーション
+          USER_REGEX = /\A[a-z0-9]+\z/i
+          validates :user_id, uniqueness: true, presence: true, format: {with: USER_REGEX}, length: { in: 5..12 }
+          validates :password, format: {with: USER_REGEX}
+          validates :name, length: { in: 1..20 }, presence: true
+          validates :introduction, length: { maximum: 300 }
+         # アソシエーション
          has_many :group_users, dependent: :destroy
          has_many :groups, through: :group_users
          has_many :shelves, dependent: :destroy
          has_many :comments, dependent: :destroy
          has_many :recommendation, dependent: :destroy
-
+         # refile関連
          attachment :mypage_image
          attachment :profile_image
-
+         # 退会機能
          acts_as_paranoid
-
-         validates :user_id, uniqueness: true, presence: true
-
+         # 友達申請に関するアソシエーション
          has_many :friends
          has_many :requests, through: :friends, source: :friend
          has_many :reverse_of_friends, class_name: 'Friend', foreign_key: 'friend_id'
