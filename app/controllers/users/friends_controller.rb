@@ -3,6 +3,7 @@ class Users::FriendsController < ApplicationController
   	@friends = Friend.where(user_id: current_user.id).where(friend_flag: true).or(Friend.where(friend_id: current_user.id).where(friend_flag: true))
   	@my_requests = Friend.where(user_id: current_user.id).where(friend_flag: false)
   	@other_requests = Friend.where(friend_id: current_user.id).where(friend_flag: false)
+    @recommendations = Recommendation.where(friend_id: current_user.id)
   end
   def create
   	request = current_user.request(user)

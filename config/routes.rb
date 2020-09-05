@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     patch 'users/quit_update' => "users#quit_update"
     resources :users, only: [ :show, :edit, :update, :destroy] do
       resources :friends, only: [ :index, :create, :update, :destroy]
-      resources :recommendations, only: [ :show, :new, :create, :destroy]
+      resources :recommendations, only: [ :show, :new, :create, :update, :destroy]
     end
     resources :shelves, only: [ :show, :new, :create, :edit, :update, :destroy] do
       resources :productions, only: [ :show, :new, :create, :destroy] do

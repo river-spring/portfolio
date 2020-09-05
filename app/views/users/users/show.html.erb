@@ -6,7 +6,7 @@
 				<%= render 'my_image', user: @user, friend: @friend %><!-- マイページ画像 -->
 				<p class="col-xs-offset-3"><%= @user.introduction %></p>
 				<div class="mypage__shelves col-xs-offset-3">
-					<% if current_user %>
+					<% if @user == current_user %>
 						<%= link_to "New Shelf",new_users_shelf_path, class: "btn mypage__shelves__btn col-xs-offset-11", data: {"turbolinks"=>false} %>
 					<% end %>
 					<% if Shelf.find_by(user_id: params[:id]).nil? %>

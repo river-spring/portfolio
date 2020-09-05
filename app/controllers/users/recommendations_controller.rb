@@ -1,8 +1,11 @@
 class Users::RecommendationsController < ApplicationController
   def show
+  	@recommendation = Recommendation.find(params[:id])
+  	@user = User.find_by(id: params[:user_id])
   end
 
   def new
+  	@friend = User.find(params[:user_id])
   	@genre = params[:genre]
     title = params[:title]
     uri = URI.parse(URI.encode("https://api.themoviedb.org/3/search/#{@genre}?api_key=#{ENV['TMDB_KEY']}&language=ja-JA&query=#{title}&page=1&include_adult=false"))
@@ -16,20 +19,26 @@ class Users::RecommendationsController < ApplicationController
 
   def create
   	recommendation = Recommendation.new(recommendation_params)
-  	friend = Friend.find_by(user_id: params[:user_id], friend_id: current_user.id)
-  	if friend.nil?
-  		friend = Friend.find_by(user_id: current_user.id, friend_id:params[:user_id])
-  	end
-  	recommendation.friend_id = friend.id
-  	byebug
+  	recommendation.friend_id = params[:user_id]
+  	recommendation.user_id = current_user.id
   	recommendation.save
     redirect_to users_user_recommendation_path(user_id: params[:user_id], id: recommendation.id), notice: "オススメを作成しました！"
   end
 
+  def update
+  	recommendation = Recommendation.find(params[:id])
+  	recommendation.update(recommendation_params)
+  	byebug
+  	redirect_back(fallback_location: root_path)
+  end
+
   def destroy
+  	recommendation = Recommendation.find(params[:id])
+  	recommendation.destroy
+  	redirect_to  users_user_friends_path(current_user, anchor: "friend_recommend")
   end
   private
   def recommendation_params
-    params.permit(:title, :outline, :image_id, :shelf_id, :release_date)
+    params.permit(:title, :outline, :image_id, :shelf_id, :release_date, :comment)
   end
 end

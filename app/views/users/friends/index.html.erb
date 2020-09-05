@@ -7,14 +7,14 @@
 				<div class="friend col-xs-offset-3">
 					<!-- タブメニュー -->
 					<ul class="nav nav-tabs nav-justified" id="friend__tab_menu">
-						<li><%= link_to "友達一覧",  "javascript:void(0)", data: { target: "frinds_list" }, class: "active" %></li>
-						<li><%= link_to "申請中",   "javascript:void(0)" , data: { target: "frind_request" }%></li>
-						<li><%= link_to "承認待ち",  "javascript:void(0)", data: { target: "frind_wait" }%></li>
-						<li><%= link_to "オススメ",  "javascript:void(0)", data: { target: "frind_recommend" } %></li>
+						<li><%= link_to "友達一覧",  "javascript:void(0)", data: { target: "friends_list" }, class: "active" %></li>
+						<li><%= link_to "申請中",   "javascript:void(0)" , data: { target: "friend_request" }%></li>
+						<li><%= link_to "承認待ち",  "javascript:void(0)", data: { target: "friend_wait" }%></li>
+						<li><%= link_to "オススメ",  "javascript:void(0)", data: { target: "friend_recommend" } %></li>
 					</ul>
 					<!-- タブメニュー -->
 					<div id="friend_tab_contents">
-						<section id="frinds_list" class="friend__tab">
+						<section id="friends_list" class="friend__tab">
 							<h4>フレンド一覧</h4>
 							<% if @friends.exists? %>
 								<% @friends.each do |friend| %>
@@ -68,7 +68,7 @@
 								<p class="friend__empty">まだ友達は登録されていません。</p>
 							<% end %>
 						</section>
-						<section id="frind_request" class="friend__tab">
+						<section id="friend_request" class="friend__tab">
 							<h4>申請中</h4>
 							<% if @my_requests.exists? %>
 								<% @my_requests.each do |friend| %>
@@ -98,7 +98,7 @@
 								<p class="friend__empty">申請中のフレンドリクエストはありません。</p>
 							<% end %>
 						</section>
-						<section id="frind_wait" class="friend__tab">
+						<section id="friend_wait" class="friend__tab">
 							<h4>承認待ち</h4>
 							<% if @other_requests.exists? %>
 								<% @other_requests.each do |friend| %>
@@ -131,8 +131,23 @@
 								<p class="friend__empty">フレンドリクエストはありません。</p>
 							<% end %>
 						</section>
-						<section id="frind_recommend" class="friend__tab">
-							<h4>オススメ</h4>
+						<section id="friend_recommend" class="friend__tab">
+							<% if @recommendations.exists? %>
+								<% @recommendations.each do |recommend| %>
+									<div class="friend__recommend">
+											<h3><%= link_to recommend.user.name, users_user_path(recommend.user), class: "friend__recommend__name" %>さんからのオススメ!</h3>
+											<%= link_to users_user_recommendation_path(user_id: current_user.id, id: recommend.id) do %>
+											<p class="friend__recommend__text">
+												<%= recommend.title %><br>
+												<span>【公開日】<%= recommend.release_date %></span>
+											</p>
+										<% end %>
+									</div>
+								<% end %>
+
+							<% else %>
+								<p class="friend__empty">オススメされている作品はありません。</p>
+							<% end %>
 						</section>
 					</div>
 				</div>

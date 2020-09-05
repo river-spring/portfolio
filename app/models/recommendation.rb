@@ -1,4 +1,4 @@
 class Recommendation < ApplicationRecord
-	belongs_to :friend
-	attachment :image
+	belongs_to :user
+	belongs_to :friend, class_name: 'User'
 end

@@ -2,11 +2,11 @@
 	<div class="container">
 		<div class="row">
 			<%= render 'users/users/sidebar', user: current_user %><!-- サイドバー -->
-			<section class="col-xs-7 col-xs-offset-2 production_search">
-				<h2>オススメ作成</h2>
+			<section class="col-xs-7 col-xs-offset-2 recommendation_search">
+				<h2><%= @friend.name %>さんへのオススメ作成</h2>
 				<!-- 作品検索 -->
 					<%= form_tag( new_users_user_recommendation_path(params[:user_id]),:method => 'get') do %>
-  						<%= select_tag :genre,options_for_select([ ['---選択してください---', ''],['ドラマ/アニメ', 'tv'], ['映画', 'movie']]), class: "btn btn-default dropdown-toggle production_search__form" %>
+  						<%= select_tag :genre,options_for_select([ ['---選択してください---', ''],['ドラマ/アニメ', 'tv'], ['映画', 'movie']]), class: "btn btn-default dropdown-toggle recommendation_search__form" %>
   						<div class="input-group">
 	  						<%= text_field_tag :title, "", class: "form-control" %>
 	  						<span class="input-group-btn">
@@ -17,15 +17,15 @@
 				<!-- 作品検索結果 -->
 				<% if @genre == "tv" %>
 					<h2>検索結果<%= @productions["results"].count %>件</h2>
-					<div class="production_search__results">
+					<div class="recommendation_search__results">
 						<% @productions["results"].each do |production| %>
-							<div class="col-xs-6 production_search__results__box">
+							<div class="col-xs-6 recommendation_search__results__box">
 								<%= image_tag "https://image.tmdb.org/t/p/w154#{production['poster_path']}", class: "col-xs-6 tmdb_image" %>
 								<div class="col-xs-6">
 									<p>[タイトル]<br><%= production["name"] %></p>
 									<p>[放送開始日]<br><%= production["first_air_date"] %></p>
 								</div>
-								<div class="col-xs-12 production_search__results__box__outline">
+								<div class="col-xs-12 recommendation_search__results__box__outline">
 									<%= production["overview"] %>
 								</div>
 								<%=link_to "オススメ！",users_user_recommendations_path(params[:user_id], title: production["name"], outline: production["overview"], image_id: "https://image.tmdb.org/t/p/w185#{production['poster_path']}", release_date: production["first_air_date"]), method: :post, class: "btn btn-info" %>
@@ -34,15 +34,15 @@
 					</div>
 				<% elsif @genre == "movie" %>
 					<h2>検索結果<%= @productions["results"].count %>件</h2>
-					<div class="production_search__results">
+					<div class="recommendation_search__results">
 						<% @productions["results"].each do |production| %>
-							<div class="col-xs-6 production_search__results__box">
+							<div class="col-xs-6 recommendation_search__results__box">
 								<%= image_tag "https://image.tmdb.org/t/p/w154#{production['poster_path']}", fallback: "production.png", class: "col-xs-6  tmdb_image" %>
 								<div class="col-xs-6">
 									<p>[タイトル]<br><%= production["title"] %></p>
 									<p>[公開日]<br><%= production["release_date"] %></p>
 								</div>
-								<div class="col-xs-12 production_search__results__box__outline">
+								<div class="col-xs-12 recommendation_search__results__box__outline">
 									<%= production["overview"] %>
 								</div>
 								<%=link_to "オススメ！", users_user_recommendations_path(params[:user_id],title: production["title"], outline: production["overview"], image_id: "https://image.tmdb.org/t/p/w185#{production['poster_path']}", release_date: production["release_date"]), method: :post, class: "btn btn-info" %>

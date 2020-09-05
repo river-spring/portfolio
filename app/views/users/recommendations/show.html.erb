@@ -1,2 +1,32 @@
-<h1>Users::Recommendations#show</h1>
-<p>Find me in app/views/users/recommendations/show.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render 'users/users/sidebar', user: current_user %><!-- サイドバー -->
+			<section class="production col-xs-8 col-xs-offset-2">
+				<h2><%= @recommendation.title %></h2>
+				<%= image_tag @recommendation.image_id, fallback: "production.png", class: "production__image col-xs-6" %>
+				<p class="col-xs-6">【公開日】<%= @recommendation.release_date %></p><br><br><br>
+				<div class="col-xs-6">【あらすじ】<br><%= @recommendation.outline %></div>
+				<% if @recommendation.user_id == current_user.id || @recommendation.friend_id == @recommendation.friend_id %>
+					<%= link_to "オススメを削除する", users_user_recommendation_path(user_id: @recommendation.friend_id, id: @recommendation.id ), method: :delete, remote: true, class: "btn btn-danger col-xs-offset-10" %>
+				<% end %>
+			</section>
+			<div  class="col-xs-8 col-xs-offset-4">
+				<% if @recommendation.comment.present? %>
+					<div class="show_recommendation__comment">
+						<span><%= @recommendation.user.name %>さんのオススメポイント</span>
+						<p><%= @recommendation.comment %></p>
+					</div>
+				<% end %>
+				<div class="comment_form">
+					<% if @recommendation.user_id == current_user.id %>
+						<p class="comment_form__title">オススメポイント</p>
+						<%= form_with(model: [@user ,@recommendation], url: users_user_recommendation_path(user_id: @recommendation.friend_id, id: @recommendation.id)) do |f| %>
+						<%= f.text_area :comment, class: "form-control" %>
+						<%= f.submit "更新",  class: "btn btn-info comment_form__btn col-xs-offset-11" %>
+					<% end %>
+		<% end %>
+	</div>
+			</div>
+		</div>
+	</div>

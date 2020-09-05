@@ -23,6 +23,8 @@ $subcolor: #b0c4de;
 	&__results {
 		margin: 20px 0;
 		&__box {
+			height: 300px;
+			overflow: scroll;
 			margin: 20px 0;
 			&__outline {
 			margin-top: 10px;

@@ -7,6 +7,7 @@ class User < ApplicationRecord
          has_many :groups, through: :group_users
          has_many :shelves, dependent: :destroy
          has_many :comments, dependent: :destroy
+         has_many :recommendation, dependent: :destroy
 
          attachment :mypage_image
          attachment :profile_image

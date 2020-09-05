@@ -5,8 +5,8 @@
 				<div class="edit">
 					<div class="col-xs-3">
 						<%= f.label :マイページ画像 %>
-						<%= attachment_image_tag @user, :mypage_image, fallback: "noback.png", class: " img-rounded mypage-img" %>
-						<%= f.attachment_field :mypage_image, id: "mypage-image", size:"300x200", class: "edit__attachment" %>
+						<%= attachment_image_tag @user, :mypage_image, size:"300x200", fallback: "noback.png", class: " img-rounded mypage-img" %>
+						<%= f.attachment_field :mypage_image, id: "mypage-image", class: "edit__attachment" %>
 						<%= attachment_image_tag @user, :profile_image, fallback: "noimage.png", size:"150x150", class: " img-circle col-xs-offset-1 profile-img" %>
 						<%= f.label :プロフィール画像 %>
 						<%= f.attachment_field :profile_image, id: "profile-image", class: "edit__attachment" %>

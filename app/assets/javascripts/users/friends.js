@@ -4,7 +4,7 @@
 
 $(document).on('turbolinks:load', function() {
 	// フレンドページタブメニューに関するアクション
-	$('#friend_tab_contents .friend__tab[id != "frinds_list"]').hide();
+	$('#friend_tab_contents .friend__tab[id != "friends_list"]').hide();
 
 	$('#friend__tab_menu a').on('click', function(event) {
 		$("#friend_tab_contents .friend__tab").hide();
