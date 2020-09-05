@@ -24,3 +24,19 @@ $subcolor: #b0c4de;
 		}
 	}
 }
+/*オススメ詳細画面のCSS*/
+.show_recommendation {
+	&__comment {
+		margin: 20px 0;
+		&__name {
+			margin: 10px 0;
+			color: $subcolor;
+		}
+		&__text {
+			border: dashed 2px $subcolor;
+			padding: 10px;
+			max-height: 500px;
+			overflow: scroll;
+		}
+	}
+}

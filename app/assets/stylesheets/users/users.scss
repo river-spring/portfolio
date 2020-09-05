@@ -130,6 +130,28 @@ $subcolor: #b0c4de;
 		margin-top: 400px;
 	}
 }
+/*オススメ履歴のCSS*/
+.history {
+	&__box {
+		border-bottom: solid 1px $subcolor;
+		padding: 10px;
+		position: relative;
+		&:hover {
+			opacity: 0.7;
+		}
+		&__name {
+			color: $subcolor;
+		}
+		&__text {
+			color: $textcolor;
+		}
+		&__btn {
+			position: absolute;
+			left: 500px;
+			top: 50px;
+		}
+	}
+}
 /*退会画面のCSS*/
 .quit {
 	height: 500px;

@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     resources :users, only: [ :show, :edit, :update, :destroy] do
       resources :friends, only: [ :index, :create, :update, :destroy]
       resources :recommendations, only: [ :show, :new, :create, :update, :destroy]
+      collection do
+          get :history
+      end
     end
     resources :shelves, only: [ :show, :new, :create, :edit, :update, :destroy] do
       resources :productions, only: [ :show, :new, :create, :destroy] do

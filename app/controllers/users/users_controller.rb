@@ -22,6 +22,10 @@ class Users::UsersController < ApplicationController
     end
   end
 
+  def history
+    @recommendation = Recommendation.where(user_id: current_user.id)
+  end
+
   def quit
   end
 

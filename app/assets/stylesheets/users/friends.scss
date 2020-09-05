@@ -36,6 +36,9 @@ $subcolor: #b0c4de;
 			color: $textcolor;
 		}
 	}
+	&__history {
+		color: $subcolor;
+	}
 	&__recommend {
 		border-bottom: solid 1px $subcolor;
 		&:hover {

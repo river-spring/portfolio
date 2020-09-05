@@ -1,0 +1,22 @@
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render 'sidebar', user: current_user %><!-- サイドバー -->
+			<section class="history col-xs-6 col-xs-offset-1">
+				<h2>オススメ履歴</h2>
+				<% @recommendation.each do |recommend| %>
+					<div class="history__box">
+						<p><%= link_to recommend.friend.name, users_user_path(recommend.friend), class: "history__box__name" %>さんへのオススメ</p>
+						<%= link_to users_user_recommendation_path(user_id: recommend.friend_id, id: recommend.id) do %>
+							<p class="history__box__text">
+								<%= recommend.title %><br>
+								<span>【公開日】<%= recommend.release_date %></span>
+							</p>
+						<% end %>
+						<%= link_to "取消" , users_user_recommendation_path(user_id: recommend.friend_id, id: recommend.id), method: :delete, class: "btn btn-danger btn-sm history__box__btn" %>
+					</div>
+				<% end %>
+			</section>
+		</div>
+	</div>
+</div>

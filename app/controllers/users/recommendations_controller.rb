@@ -27,8 +27,7 @@ class Users::RecommendationsController < ApplicationController
 
   def update
   	recommendation = Recommendation.find(params[:id])
-  	recommendation.update(recommendation_params)
-  	byebug
+  	recommendation.update!(recommendation_update_params)
   	redirect_back(fallback_location: root_path)
   end
 
@@ -39,6 +38,9 @@ class Users::RecommendationsController < ApplicationController
   end
   private
   def recommendation_params
-    params.permit(:title, :outline, :image_id, :shelf_id, :release_date, :comment)
+    params.permit(:title, :outline, :image_id, :shelf_id, :release_date)
+  end
+  def recommendation_update_params
+  	params.require(:recommendation).permit(:comment)
   end
 end

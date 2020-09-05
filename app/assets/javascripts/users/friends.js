@@ -17,11 +17,11 @@ $(document).on('turbolinks:load', function() {
 	$(function(){
 		$('.friend_btn').mouseover(function(){
 			$(this).text('取り消し');
-			$(this).css({'background-color': '#d9534f','border-color': '#d9534f'});
+			$(this).css({'background-color': '#d9534f','border-color': '#d9534f', 'transition': '.3s'});
 		});
 		$('.friend_btn').mouseout(function(){
 			$(this).text('フレンド');
-			$(this).css({'background-color': '#5bc0db','border-color': '#5bc0db'});
+			$(this).css({'background-color': '#5bc0db','border-color': '#5bc0db', 'transition': '.3s'});
 		});
 	});
 });

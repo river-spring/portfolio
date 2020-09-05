@@ -132,16 +132,17 @@
 							<% end %>
 						</section>
 						<section id="friend_recommend" class="friend__tab">
+							<%= link_to "自分のオススメ履歴>>", history_users_users_path, class: "friend__history col-xs-offset-8" %>
 							<% if @recommendations.exists? %>
 								<% @recommendations.each do |recommend| %>
 									<div class="friend__recommend">
 											<h3><%= link_to recommend.user.name, users_user_path(recommend.user), class: "friend__recommend__name" %>さんからのオススメ!</h3>
 											<%= link_to users_user_recommendation_path(user_id: current_user.id, id: recommend.id) do %>
-											<p class="friend__recommend__text">
-												<%= recommend.title %><br>
-												<span>【公開日】<%= recommend.release_date %></span>
-											</p>
-										<% end %>
+												<p class="friend__recommend__text">
+													<%= recommend.title %><br>
+													<span>【公開日】<%= recommend.release_date %></span>
+												</p>
+											<% end %>
 									</div>
 								<% end %>
 

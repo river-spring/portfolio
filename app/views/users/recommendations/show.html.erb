@@ -14,8 +14,8 @@
 			<div  class="col-xs-8 col-xs-offset-4">
 				<% if @recommendation.comment.present? %>
 					<div class="show_recommendation__comment">
-						<span><%= @recommendation.user.name %>さんのオススメポイント</span>
-						<p><%= @recommendation.comment %></p>
+						<p class="show_recommendation__comment__name"><%= @recommendation.user.name %>さんのオススメポイント<span class="glyphicon glyphicon-thumbs-up"></span></p>
+						<p class="show_recommendation__comment__text"><%= @recommendation.comment %></p>
 					</div>
 				<% end %>
 				<div class="comment_form">
