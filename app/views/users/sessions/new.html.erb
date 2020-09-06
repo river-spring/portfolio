@@ -3,6 +3,7 @@
     <div class="row">
       <section class="log-in col-xs-3">
         <h2 class="log-in__title">ログイン</h2>
+        <%= devise_error_messages %>
         <div class="form-group">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="field">
