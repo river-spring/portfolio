@@ -2,7 +2,14 @@ ja:
   activerecord:
     models:
       shelf: 棚
+      group: グループ
+      recommendation: オススメ
     attributes:
       shelf:
         name: 棚の名前
         outline: 概要
+      group:
+        name: グループ名
+        outline: 概要
+      recommendation:
+        comment: オススメコメント
