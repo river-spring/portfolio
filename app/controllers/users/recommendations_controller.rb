@@ -28,13 +28,14 @@ class Users::RecommendationsController < ApplicationController
   def update
   	recommendation = Recommendation.find(params[:id])
   	recommendation.update!(recommendation_update_params)
+    flash[:notice] = "オススメコメントを追加しました。"
   	redirect_back(fallback_location: root_path)
   end
 
   def destroy
   	recommendation = Recommendation.find(params[:id])
   	recommendation.destroy
-  	redirect_to  users_user_friends_path(current_user, anchor: "friend_recommend")
+  	redirect_to  users_user_friends_path(current_user), alert: "オススメを削除しました。"
   end
   private
   def recommendation_params

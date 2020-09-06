@@ -35,10 +35,12 @@ $subcolor: #b0c4de;
 /*作品詳細のコメントCSS*/
 .production_comments {
 	margin: 20px 0;
-	border-top: solid 1px $subcolor;
 	&__box {
 		padding: 10px 0;
 		border-bottom: solid 1px $subcolor;
+		&:nth-child(1) {
+			border-top: solid 1px $subcolor;
+		}
 		&__link {
 			color: $textcolor;
 		}

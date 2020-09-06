@@ -8,36 +8,23 @@ class Users::FriendsController < ApplicationController
   def create
   	request = current_user.request(user)
   	request.friend_flag = "false"
-  	if request.save
-  		flash[:success] = "フレンドリクエストを送りました。"
-      	redirect_to users_user_path(user)
-    else
-        flash.now[:alert] = "フレンドリクエストに失敗しました。"
-        redirect_to users_user_path(user)
-    end
+  	request.save
+    redirect_to users_user_path(user), notice: "フレンドリクエストを送りました！"
   end
   def update
   	request = Friend.find(params[:id])
-  	if request.update(friend_flag: "true")
-  		flash[:success] = "フレンドリクエストを許可しました。"
-  		redirect_back(fallback_location: root_path)
-  	else
-  		flash.now[:alert] = "エラーが発生しました。"
-        redirect_back(fallback_location: root_path)
-  	end
+  	request.update(friend_flag: "true")
+    flash[:notice] = "フレンドリクエストを許可しました！"
+  	redirect_back(fallback_location: root_path)
   end
   def destroy
   	request = current_user.refuse(user)
   	if request.nil?
   		request = Friend.find(params[:id])
   	end
-  	if request.destroy
-  	  	flash[:success] = '削除しました。'
-      	redirect_back(fallback_location: root_path)
-    else
-      	flash.now[:alert] = '削除に失敗しました'
-      	redirect_back(fallback_location: root_path)
-    end
+  	request.destroy
+    flash[:alert] = "取り消しました！"
+    redirect_back(fallback_location: root_path)
   end
   private
   def user

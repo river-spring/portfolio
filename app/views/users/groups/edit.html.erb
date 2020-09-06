@@ -8,9 +8,18 @@
 					<div class="col-xs-3 col-xs-offset-1">
 						<%= f.label :グループの画像 %>
 						<%= attachment_image_tag @group, :image, fallback: "group.png", size:"300x200", class: " img-rounded edit-group-img" %>
-						<%= f.attachment_field :image, id: "edit-group-image", class: "edit-group__attachment" %>
+						<%= f.attachment_field :image, id: "edit-group-image", class: "edit_group__attachment" %>
 					</div>
 					<div class="col-xs-offset-1 col-xs-4">
+						<!-- エラーメッセージ -->
+						<% if @group.errors.any? %>
+							<ul>
+								<% @group.errors.full_messages.each do |message| %>
+								<li class="alert alert-danger alert_li"><%= message %></li>
+								<% end %>
+							</ul>
+						<% end %>
+						<!-- エラーメッセージ -->
 						<span><%= f.label :グループ名 %>(1文字以上20文字以内)</span>
 						<%= f.text_field :name, class: "form-control edit_group__text" %>
 						<span><%= f.label :グループ概要 %>（300文字以内）</span>
@@ -26,8 +35,8 @@
 							<% end %>
 						</div>
 					</div>
-						<%= f.submit '変更を保存する', class: "btn edit-group__submit col-xs-offset-10" %>
-						<%= link_to '解散する' , users_group_path(@group), method: :delete, class: "btn btn-danger edit-group__btn col-xs-offset-10" %>
+						<%= f.submit '変更を保存する', class: "btn edit_group__submit col-xs-offset-10" %>
+						<%= link_to '解散する' , users_group_path(@group), method: :delete, class: "btn btn-danger edit_group__btn col-xs-offset-10" %>
 					</div>
 				<% end %>
 			</section>

@@ -15,8 +15,7 @@ class Users::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      flash[:notice] = "設定を変更しました"
-      redirect_to users_user_path(current_user)
+      redirect_to users_user_path(current_user),notice: "設定を変更しました。"
     else
       render :edit
     end
@@ -28,8 +27,9 @@ class Users::UsersController < ApplicationController
   def password_update
    if current_user.update(password_params)
     sign_in(current_user, bypass: true)
-    redirect_to  users_user_path(current_user)
+    redirect_to  users_user_path(current_user),notice: "パスワードを変更しました。"
    else
+    flash.now[:alert] = "パスワードが不正な値です。"
     render :edit_password
    end
   end

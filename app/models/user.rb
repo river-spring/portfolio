@@ -4,11 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          # バリデーション
-          USER_REGEX = /\A[a-z0-9]+\z/i
-          validates :user_id, uniqueness: true, presence: true, format: {with: USER_REGEX}, length: { in: 5..12 }
-          validates :password, format: {with: USER_REGEX}
-          validates :name, length: { in: 1..20 }, presence: true
-          validates :introduction, length: { maximum: 300 }
+         USER_REGEX = /\A[a-z0-9]+\z/i
+         validates :user_id, uniqueness: true, presence: true, format: {with: USER_REGEX}, length: { in: 5..12 }
+         validate :password_validator
+         validates :name, length: { in: 1..20 }, presence: true
+         validates :introduction, length: { maximum: 300 }
          # アソシエーション
          has_many :group_users, dependent: :destroy
          has_many :groups, through: :group_users
@@ -48,4 +48,12 @@ class User < ApplicationRecord
                 User.where('user_id LIKE ?', "%#{word}%")
             end
          end
+         # パスワードに関するバリデーション
+         def password_validator
+            return if password.blank? || password =~ /\A[a-z0-9]+\z/i
+
+            errors.add :password, 'パスワードは半角英数で入力してください。'
+         end
+
+
 end

@@ -14,13 +14,13 @@ class Users::ShelvesController < ApplicationController
     if @shelf.group_id.nil?
       @shelf.user_id = current_user.id
       if @shelf.save
-        redirect_to users_shelf_path(@shelf.id)
+        redirect_to users_shelf_path(@shelf.id),notice: "棚を作成しました！"
       else
         render :new
       end
     else
       if @shelf.save
-        redirect_to users_shelf_path(@shelf.id)
+        redirect_to users_shelf_path(@shelf.id),notice: "棚を作成しました！"
       else
         render :new
       end
@@ -35,7 +35,7 @@ class Users::ShelvesController < ApplicationController
     @shelf = Shelf.find(params[:id])
     if @shelf.update(shelf_params)
       flash[:notice] = "変更しました"
-      redirect_to users_shelf_path(@shelf.id)
+      redirect_to users_shelf_path(@shelf.id),notice: "棚の変更を保存しました！"
     else
       render :edit
     end
@@ -43,8 +43,13 @@ class Users::ShelvesController < ApplicationController
 
   def destroy
     shelf = Shelf.find(params[:id])
-    shelf.destroy
-    redirect_to users_user_path(current_user)
+    if shelf.group_id.nil?
+      shelf.destroy
+      redirect_to users_user_path(current_user), alert: "棚を削除しました！"
+    else
+      shelf.destroy
+      redirect_to users_group_path(shelf.group_id), alert: "棚を削除しました！"
+    end
   end
   private
   def shelf_params

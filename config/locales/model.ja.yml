@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      shelf: 棚
+    attributes:
+      shelf:
+        name: 棚の名前
+        outline: 概要

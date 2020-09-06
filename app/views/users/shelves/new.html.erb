@@ -11,6 +11,13 @@
 						<%= f.attachment_field :shelf_image, id: "new-shelf-image", class: "new_shelf__attachment" %>
 					</div>
 					<div class="col-xs-offset-1 col-xs-4">
+						<% if @shelf.errors.any? %>
+							<ul>
+								<% @shelf.errors.full_messages.each do |message| %>
+								<li class="alert alert-danger alert_li"><%= message %></li>
+								<% end %>
+							</ul>
+						<% end %>
 						<span><%= f.label :棚の名前 %>(1文字以上20文字以内)</span>
 						<%= f.text_field :name, class: "form-control new_shelf__text" %>
 						<span><%= f.label :棚の概要 %>（300文字以内）</span>
