@@ -2,26 +2,30 @@
 	<div class="container">
 		<div class="row">
 			<%= render 'sidebar'%><!-- 管理者用サイドバー -->
-			<section class="admin_user_index col-xs-8">
+			<section class="admin_user_index col-xs-9 col-xs-offset-1">
 				<h2>ユーザー一覧</h2>
-				<table>
-					<tr>
-						<th>ID</th>
-						<th>ユーザー名</th>
-						<th>ユーザーID</th>
-						<th>メールアドレス</th>
-						<th>登録日時</th>
-						<th>最終ログイン日時</th>
+				<table class="table">
+					<tr class="admin_user_index__head">
+						<th class="admin_user_index__head__th">ID</th>
+						<th class="admin_user_index__head__th">ユーザー名</th>
+						<th class="admin_user_index__head__th">ユーザーID</th>
+						<th class="admin_user_index__head__th">メールアドレス</th>
+						<th class="admin_user_index__head__th">登録日時</th>
+						<th class="admin_user_index__head__th">最終ログイン日時</th>
+						<th class="admin_user_index__head__th">ログイン回数</th>
 					</tr>
 					<% @users.each do |user| %>
-					<tr>
-						<td><%= user.id %></td>
-						<td><%= user.name %></td>
-						<td><%= user.user_id %></td>
-						<td><%= user.email %></td>
-						<td><%= user.created_at %></td>
-						<td><%#= user.sign_in_at %></td>
-					</tr>
+						<%= link_to admins_user_path(user) do %>
+						<tr class="admin_user_index__body">
+								<td class="admin_user_index__body__td"><%= user.id %></td>
+								<td><%= user.name %></td>
+								<td><%= user.user_id %></td>
+								<td class="admin_user_index__body__td"><%= user.email %></td>
+								<td class="admin_user_index__body__td"><%= user.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+								<td class="admin_user_index__body__td"><%= user.current_sign_in_at %></td>
+								<td class="admin_user_index__body__td"><%= user.sign_in_count %></td>
+						</tr>
+						<% end %>
 					<% end %>
 				</table>
 			</section>
