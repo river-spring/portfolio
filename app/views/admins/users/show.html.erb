@@ -1,2 +1,104 @@
-<h1>Admins::Users#show</h1>
-<p>Find me in app/views/admins/users/show.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render '/admins/users/sidebar' %><!-- 管理者用サイドバー -->
+			<section class="admin_user_show">
+				<!-- サクセスメッセージ -->
+				<% if flash[:notice].present? %>
+	          		<div class="alert alert-success alert_li alert-dismissible col-xs-7">
+	            		<button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+	             		<%= flash[:notice] %>
+	            	</div>
+	            <% end %>
+	            <!-- サクセスメッセージ -->
+				<h2 class="col-xs-7">ユーザー情報</h2>
+				<div class="col-xs-7">
+					<table class="table table-bordered">
+						<tr>
+							<th class="col-xs-3">ID</th>
+							<td><%= @user.id %></td>
+						</tr>
+						<tr>
+							<th class="col-xs-3">表示名</th>
+							<td>
+								<%= @user.name %>
+								<% unless @user.deleted_at? %>
+									<span class="btn btn-info btn-xs">利用中</span>
+								<% else %>
+									<span class="btn btn-danger btn-xs">退会済</span>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th class="col-xs-3">ユーザーID</th>
+							<td><%= @user.user_id %></td>
+						</tr>
+						<tr>
+							<th class="col-xs-3">自己紹介</th>
+							<td><%= @user.introduction %></td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-xs-3">
+					<table class="table table-bordered">
+						<tr>
+							<th>作成日時</th>
+							<td><%= @user.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+						</tr>
+						<tr>
+							<th>更新日時</th>
+							<td><%= @user.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+						</tr>
+						<tr>
+							<th>最終ログイン</th>
+							<td><%= @user.current_sign_in_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+						</tr>
+						<tr>
+							<th>ログイン回数</th>
+							<td><%= @user.sign_in_count %>回</td>
+						</tr>
+					</table>
+					<%= link_to "ユーザー情報編集", edit_admins_user_path(@user), data: {"turbolinks"=>false}, class: "btn btn-info" %>
+				</div>
+				<div class="col-xs-10 col-xs-offset-2 admin_user_show__shelves">
+					<h3>棚一覧</h3>
+					<table class="table table-bordered">
+						<tr>
+							<th>ID</th>
+							<th>棚の名前</th>
+							<th>作成日時</th>
+							<th>更新日時</th>
+						</tr>
+						<% @user.shelves.each do |shelf| %>
+							<tr>
+								<td><%= shelf.id %></td>
+								<td><%= link_to shelf.name, admins_shelf_path(shelf), class: "admin_user_show__shelves__link" %></td>
+								<td><%= shelf.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+								<td><%= shelf.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+							</tr>
+						<% end %>
+					</table>
+				</div>
+				<div class="col-xs-10 col-xs-offset-2 admin_user_show__groups">
+					<h3>所属グループ一覧</h3>
+					<table class="table table-bordered">
+						<tr>
+							<th>ID</th>
+							<th>グループ名</th>
+							<th>作成日時</th>
+							<th>更新日時</th>
+						</tr>
+						<% @user.groups.each do |group| %>
+							<tr>
+								<td><%= group.id %></td>
+								<td><%= link_to group.name, admins_group_path(group), class: "admin_user_show__groups__link" %></td>
+								<td><%= group.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+								<td><%= group.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+							</tr>
+						<% end %>
+					</table>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>

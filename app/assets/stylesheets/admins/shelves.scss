@@ -7,3 +7,24 @@ $pointcolor: #f1d145;
 $textcolor: #ffffff;
 $subcolor: #b0c4de;
 /*管理者棚一覧のCSS*/
+.admin_shelves {
+	&__head {
+		border-color: $subcolor;
+		background-color: $subcolor;
+		color: $backcolor;
+		&__th {
+			text-align: center;
+		}
+	}
+	&__body {
+		border-color: $subcolor;
+		color: $textcolor;
+		text-align: center;
+		&:hover {
+			opacity: 0.7;
+		}
+		&__link {
+			color: $textcolor;
+		}
+	}
+}

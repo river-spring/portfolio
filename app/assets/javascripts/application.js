@@ -76,3 +76,23 @@ $(function(){
 		reader.readAsDataURL(e.target.files[0]);
 	});
 });
+// 管理者ユーザー編集画面のプレビュー
+$(function(){
+	$('#admin-mypage-image').on('change', function(e) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			$(".admin-mypage-img").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	});
+});
+
+$(function(){
+	$('#admin-profile-image').on('change', function(e) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+		$(".admin-profile-img").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	});
+});

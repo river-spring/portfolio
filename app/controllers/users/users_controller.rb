@@ -42,8 +42,8 @@ class Users::UsersController < ApplicationController
   end
 
   def quit_update
-    customer = current_customer
-    customer.destroy
+    user = current_user
+    user.destroy
     redirect_to root_path
   end
 

@@ -3,6 +3,14 @@
 		<div class="row">
 			<%= render 'sidebar'%><!-- 管理者用サイドバー -->
 			<section class="admin_user_index col-xs-9 col-xs-offset-1">
+				<!-- サクセスメッセージ -->
+				<% if flash[:notice].present? %>
+	          		<div class="alert alert-success alert_li alert-dismissible">
+	              		<button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+	              		<%= flash[:notice] %>
+	              	</div>
+	            <% end %>
+	            <!-- サクセスメッセージ -->
 				<h2>ユーザー一覧</h2>
 				<table class="table">
 					<tr class="admin_user_index__head">
@@ -15,17 +23,19 @@
 						<th class="admin_user_index__head__th">ログイン回数</th>
 					</tr>
 					<% @users.each do |user| %>
-						<%= link_to admins_user_path(user) do %>
 						<tr class="admin_user_index__body">
-								<td class="admin_user_index__body__td"><%= user.id %></td>
-								<td><%= user.name %></td>
-								<td><%= user.user_id %></td>
-								<td class="admin_user_index__body__td"><%= user.email %></td>
-								<td class="admin_user_index__body__td"><%= user.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-								<td class="admin_user_index__body__td"><%= user.current_sign_in_at %></td>
-								<td class="admin_user_index__body__td"><%= user.sign_in_count %></td>
+							<td><%= link_to user.id, admins_user_path(user), class: "admin_user_index__body__link" %></td>
+							<td><%= link_to user.name, admins_user_path(user), class: "admin_user_index__body__link" %></td>
+							<td><%= link_to user.user_id, admins_user_path(user), class: "admin_user_index__body__link" %></td>
+							<td><%= link_to user.email, admins_user_path(user), class: "admin_user_index__body__link" %></td>
+							<td><%= link_to user.created_at.strftime('%Y/%m/%d %H:%M:%S'), admins_user_path(user), class: "admin_user_index__body__link" %></td>
+							<td>
+								<% unless user.current_sign_in_at.nil? %>
+									<%= link_to user.current_sign_in_at.strftime('%Y/%m/%d %H:%M:%S'), admins_user_path(user), class: "admin_user_index__body__link" %>
+								<% end %>
+							</td>
+							<td><%= link_to user.sign_in_count, admins_user_path(user), class: "admin_user_index__body__link" %></td>
 						</tr>
-						<% end %>
 					<% end %>
 				</table>
 			</section>

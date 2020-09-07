@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,:trackable
          # バリデーション
          USER_REGEX = /\A[a-z0-9]+\z/i
          validates :user_id, uniqueness: true, presence: true, format: {with: USER_REGEX}, length: { in: 5..12 }

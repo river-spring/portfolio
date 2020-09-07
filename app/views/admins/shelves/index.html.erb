@@ -2,6 +2,29 @@
 	<div class="container">
 		<div class="row">
 			<%= render '/admins/users/sidebar' %><!-- 管理者用サイドバー -->
+			<section class="admin_shelves col-xs-9 col-xs-offset-1">
+				<h2>棚一覧</h2>
+				<% if @shelves.exists? %>
+					<table class="table">
+						<tr class="admin_shelves__head">
+							<th class="admin_shelves__head__th">ID</th>
+							<th class="admin_shelves__head__th">棚名</th>
+							<th class="admin_shelves__head__th col-xs-3">作成日時</th>
+							<th class="admin_shelves__head__th col-xs-3">更新日時</th>
+						</tr>
+						<% @shelves.each do |shelf| %>
+							<tr class="admin_shelves__body">
+								<td><%= link_to shelf.id,admins_shelf_path(shelf), class: "admin_shelves__body__link" %></td>
+								<td><%= link_to shelf.name,admins_shelf_path(shelf), class: "admin_shelves__body__link" %></td>
+								<td><%= link_to shelf.created_at.strftime('%Y/%m/%d %H:%M:%S'),admins_shelf_path(shelf), class: "admin_shelves__body__link" %></td>
+								<td><%= link_to shelf.updated_at.strftime('%Y/%m/%d %H:%M:%S'),admins_shelf_path(shelf), class: "admin_shelves__body__link" %></td>
+							</tr>
+						<% end %>
+					</table>
+				<% else %>
+					<p>棚は作成されていません。</p>
+				<% end %>
+			</section>
 		</div>
 	</div>
 </div>
