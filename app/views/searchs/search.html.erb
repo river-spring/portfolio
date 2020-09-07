@@ -1,7 +1,11 @@
 <div class="body">
 	<div class="container">
 		<div class="row">
-			<%= render '/users/users/sidebar', user: current_user %><!-- サイドバー -->
+			<% if user_signed_in? %>
+				<%= render '/users/users/sidebar', user: current_user %><!-- サイドバー -->
+			<% elsif admin_signed_in? %>
+				<%= render '/admins/users/sidebar' %><!-- 管理者用サイドバー -->
+			<% end %>
 			<section class="search col-xs-8  col-xs-offset-1">
 				<h2>ユーザー検索</h2>
 				<!-- アラートメッセージ -->

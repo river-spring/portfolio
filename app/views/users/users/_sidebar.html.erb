@@ -2,7 +2,7 @@
 	<%= link_to "マイページ", users_user_path(user), class: "btn sidebar__btn btn-lg btn-block" %>
 	<%= link_to "フレンド", users_user_friends_path(user, anchor: "friend__tab_menu"), class: "btn sidebar__btn btn-lg btn-block" %>
 	<%= link_to "グループ", users_groups_path(anchor: "group_index"), class: "btn sidebar__btn btn-lg btn-block" %>
-	<%= link_to "検索", search_path, class: "btn sidebar__btn btn-lg btn-block" %>
+	<%= link_to "ユーザー検索", search_path, class: "btn sidebar__btn btn-lg btn-block" %>
 	<div class="sidebar__profile">
 		<%= attachment_image_tag user, :profile_image, fallback: "noimage.png", size:"50x50", class: "sidebar__profile__image" %>
 		<%= link_to current_user.name, users_user_path(user),class: "sidebar__profile__name" %>

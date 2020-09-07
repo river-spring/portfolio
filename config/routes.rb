@@ -34,9 +34,9 @@ Rails.application.routes.draw do
     resources :groups
   end
   namespace :admins do
-    resources :users, only: [ :index, :show, :edit, :update]
-    resource :groups, only: [ :index]
-    resource :shelves, only: [ :index]
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :groups, only: [:index]
+    resources :shelves, only: [:index]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
