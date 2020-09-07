@@ -15,6 +15,15 @@ class Users::ProductionsController < ApplicationController
     @shelf = Shelf.find(params[:shelf_id])
     @genre = params[:genre]
     title = params[:title]
+    # 検索ワードやジャンル選択がされていない時
+    if @genre == "" && title == ""
+      redirect_to new_users_shelf_production_path(@shelf), alert: "・検索したいジャンルを選択して下さい。・検索したいワードを入力して下さい。"
+    elsif @genre == ""
+      redirect_to new_users_shelf_production_path(@shelf), alert: "・検索したいジャンルを選択して下さい。"
+    elsif title == ""
+      redirect_to new_users_shelf_production_path(@shelf), alert: "・検索したいワードを入力して下さい。"
+    end
+    # APIに関する記述
     uri = URI.parse(URI.encode("https://api.themoviedb.org/3/search/#{@genre}?api_key=#{ENV['TMDB_KEY']}&language=ja-JA&query=#{title}&page=1&include_adult=false"))
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true

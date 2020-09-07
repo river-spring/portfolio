@@ -20,8 +20,7 @@ class Users::GroupsController < ApplicationController
     @group.users << ( User.where(id: group_user_ids) + [current_user] )
     @friends = Friend.where(user_id: current_user.id).where(friend_flag: true).or(Friend.where(friend_id: current_user.id).where(friend_flag: true))
     if @group.save
-      flash[:notice] = "グループを作成しました。"
-      redirect_to users_group_path(@group)
+      redirect_to users_group_path(@group), notice: "グループを作成しました。"
     else
       render :new
     end
@@ -49,8 +48,7 @@ class Users::GroupsController < ApplicationController
     group_user_ids = params.delete('group_users')
     @group.users << User.where(id: group_user_ids)
     if @group.update(params)
-      flash[:notice] = "グループの編集を保存しました。"
-      redirect_to users_group_path(@group)
+      redirect_to users_group_path(@group), notice: "グループの編集を保存しました。"
     else
       render :edit
     end
@@ -59,8 +57,7 @@ class Users::GroupsController < ApplicationController
   def destroy
     group = Group.find(params[:id])
     group.destroy
-    flash[:notice] = "グループを解散しました。"
-    redirect_to  users_groups_path(anchor: "group_index")
+    redirect_to  users_groups_path(anchor: "group_index"), alert: "グループを解散しました。"
   end
   def group_params
     params.require(:group).permit(:name, :image, :outline, group_users: [])

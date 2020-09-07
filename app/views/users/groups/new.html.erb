@@ -8,7 +8,7 @@
 					<div class="col-xs-3 col-xs-offset-1">
 						<%= f.label :グループの画像 %>
 						<%= attachment_image_tag @group, :image, fallback: "group.png", size:"300x200", class: " img-rounded new-group-img" %>
-						<%= f.attachment_field :image, id: "new-group-image", class: "new-shelf__attachment" %>
+						<%= f.attachment_field :image, id: "new-group-image", class: "new_shelf__attachment" %>
 					</div>
 					<div class="col-xs-offset-1 col-xs-4">
 						<!-- エラーメッセージ -->

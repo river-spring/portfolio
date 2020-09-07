@@ -4,6 +4,14 @@
 			<%= render 'users/users/sidebar', user: current_user %><!-- サイドバー -->
 			<section class="col-xs-7 col-xs-offset-2 new-production">
 				<h2>作品検索</h2>
+				<!-- アラートメッセージ -->
+	            <% if flash[:alert].present? %>
+	              	<div class="alert alert-danger alert-dismissible alert_li">
+	              		<button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+	              		<%= flash[:alert] %>
+	              	</div>
+	            <% end %>
+	            <!-- アラートメッセージ -->
 				<!-- 作品検索 -->
 				<div class="new-production__sarch">
 					<%= form_tag(search_users_shelf_productions_path(@shelf),:method => 'get') do %>

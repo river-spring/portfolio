@@ -4,19 +4,29 @@
 			<%= render '/users/users/sidebar', user: current_user %><!-- サイドバー -->
 			<div class="col-xs-8 group_index">
 				<%= render '/users/users/my_image', user: current_user %><!-- マイページ画像 -->
-				<%= link_to "New Group", new_users_group_path, class: "btn group_index__btn  col-xs-offset-11", id: "group_index", data: {"turbolinks"=>false}  %>
-				<div class="group_index__list col-xs-offset-3">
+				<!-- アラートメッセージ -->
+	            <% if flash[:alert].present? %>
+	              	<div class="alert alert-danger alert-dismissible alert_li col-xs-offset-2">
+	              		<button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+	              		<%= flash[:alert] %>
+	              	</div>
+	            <% end %>
+	            <!-- アラートメッセージ -->
+				<%= link_to "New Group", new_users_group_path, class: "btn group_index__btn col-xs-offset-11", id: "group_index", data: {"turbolinks"=>false}  %>
+				<div class="col-xs-offset-3">
 					<% if @groups.exists? %>
-						<% @groups.each do |group| %>
-							<div class="group_index__list__box">
-								<%= link_to users_group_path(group.group.id) do %>
-									<h4 class="group_index__list__box__name"><%= group.group.name %></h4>
-									<p class="group_index__list__box__outline"><%= group.group.outline %></p>
-								<% end %>
-							</div>
-						<% end %>
+						<div class="group_index__list">
+							<% @groups.each do |group| %>
+								<div class="group_index__list__box">
+									<%= link_to users_group_path(group.group.id) do %>
+										<h4 class="group_index__list__box__name"><%= group.group.name %></h4>
+										<p class="group_index__list__box__outline"><%= group.group.outline %></p>
+									<% end %>
+								</div>
+							<% end %>
+						</div>
 					<% else %>
-						<p class="groups__empty">参加しているグループはありません。</p>
+						<p class="group_index__empty">参加しているグループはありません。</p>
 					<% end %>
 				</div>
 			</div>
