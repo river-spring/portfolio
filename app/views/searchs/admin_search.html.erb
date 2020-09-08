@@ -1,0 +1,95 @@
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render '/admins/users/sidebar' %><!-- 管理者用サイドバー -->
+			<section class="search col-xs-9  col-xs-offset-1">
+				<h2>検索</h2>
+				<!-- アラートメッセージ -->
+            	<% if flash[:alert].present? %>
+              		<div class="alert alert-danger alert-dismissible alert_li">
+              			<button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+              			<%= flash[:alert] %>
+              		</div>
+            	<% end %>
+            	<!-- アラートメッセージ -->
+				<%= form_tag(admin_search_path, method: :get) do %>
+					<%= select_tag :category,options_for_select([ ['---選択してください---', ''],['ユーザー名', 'user_name'], ['ユーザーID', 'user_id'], ['グループ名', 'group_name'], ['棚名', 'shelf_name']]), class: "btn btn-default dropdown-toggle new-production__sarch__select" %>
+					<div class="input-group">
+	  						<%= text_field_tag :word, "", class: "form-control" %>
+	  						<span class="input-group-btn">
+	  						<%= submit_tag "検索", class: "btn btn-default" %>
+	  						</span>
+  						</div>
+				<% end %>
+				<% if @category == "user_id" || @category == "user_name" %>
+					<div class="search__result">
+						<table class="table">
+							<tr class="admin_user_index__head">
+								<th class="admin_user_index__head__th">ID</th>
+								<th class="admin_user_index__head__th">ユーザー名</th>
+								<th class="admin_user_index__head__th">ユーザーID</th>
+								<th class="admin_user_index__head__th">メールアドレス</th>
+								<th class="admin_user_index__head__th">登録日時</th>
+								<th class="admin_user_index__head__th">最終ログイン日時</th>
+								<th class="admin_user_index__head__th">ログイン回数</th>
+							</tr>
+							<% @results.each do |result| %>
+								<tr class="admin_user_index__body">
+									<td><%= link_to result.id, admins_user_path(result), class: "admin_user_index__body__link" %></td>
+									<td><%= link_to result.name, admins_user_path(result), class: "admin_user_index__body__link" %></td>
+									<td><%= link_to result.user_id, admins_user_path(result), class: "admin_user_index__body__link" %></td>
+									<td><%= link_to result.email, admins_user_path(result), class: "admin_user_index__body__link" %></td>
+									<td><%= link_to result.created_at.strftime('%Y/%m/%d %H:%M:%S'), admins_user_path(result), class: "admin_user_index__body__link" %></td>
+									<td>
+										<% unless result.current_sign_in_at.nil? %>
+											<%= link_to result.current_sign_in_at.strftime('%Y/%m/%d %H:%M:%S'), admins_user_path(result), class: "admin_user_index__body__link" %>
+										<% end %>
+									</td>
+									<td><%= link_to result.sign_in_count, admins_user_path(result), class: "admin_user_index__body__link" %></td>
+								</tr>
+							<% end %>
+						</table>
+					</div>
+				<% elsif @category == "group_name" %>
+					<div class="search__result">
+						<table class="table">
+							<tr class="admin_groups__head">
+								<th class="admin_groups__head__th">ID</th>
+								<th class="admin_groups__head__th">グループ名</th>
+								<th class="admin_groups__head__th col-xs-3">作成日時</th>
+								<th class="admin_groups__head__th col-xs-3">更新日時</th>
+							</tr>
+							<% @results.each do |result| %>
+								<tr class="admin_groups__body">
+									<td><%= link_to result.id,admins_group_path(result), class: "admin_groups__body__link" %></td>
+									<td><%= link_to result.name,admins_group_path(result), class: "admin_groups__body__link" %></td>
+									<td><%= link_to result.created_at.strftime('%Y/%m/%d %H:%M:%S'),admins_group_path(result), class: "admin_groups__body__link" %></td>
+									<td><%= link_to result.updated_at.strftime('%Y/%m/%d %H:%M:%S'),admins_group_path(result), class: "admin_groups__body__link" %></td>
+								</tr>
+							<% end %>
+						</table>
+					</div>
+				<% elsif @category == "shelf_name" %>
+					<div class="search__result">
+						<table class="table">
+							<tr class="admin_shelves__head">
+								<th class="admin_shelves__head__th">ID</th>
+								<th class="admin_shelves__head__th">棚名</th>
+								<th class="admin_shelves__head__th col-xs-3">作成日時</th>
+								<th class="admin_shelves__head__th col-xs-3">更新日時</th>
+							</tr>
+							<% @results.each do |result| %>
+								<tr class="admin_shelves__body">
+									<td><%= link_to result.id,admins_shelf_path(result), class: "admin_shelves__body__link" %></td>
+									<td><%= link_to result.name,admins_shelf_path(result), class: "admin_shelves__body__link" %></td>
+									<td><%= link_to result.created_at.strftime('%Y/%m/%d %H:%M:%S'),admins_shelf_path(result), class: "admin_shelves__body__link" %></td>
+									<td><%= link_to result.updated_at.strftime('%Y/%m/%d %H:%M:%S'),admins_shelf_path(result), class: "admin_shelves__body__link" %></td>
+								</tr>
+							<% end %>
+						</table>
+					</div>
+				<% end %>
+			</section>
+		</div>
+	</div>
+</div>

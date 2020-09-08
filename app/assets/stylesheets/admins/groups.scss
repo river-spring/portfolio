@@ -28,3 +28,9 @@ $subcolor: #b0c4de;
 		}
 	}
 }
+/*管理者グループ詳細画面のCSS*/
+.admin-group {
+	&__link {
+		color: $subcolor;
+	}
+}

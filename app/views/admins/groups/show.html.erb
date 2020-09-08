@@ -1,0 +1,78 @@
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render 'admins/users/sidebar'%><!-- 管理者用サイドバー -->
+			<section class="admin-group">
+				<h2 class="col-xs-7">グループ情報</h2>
+				<div class="col-xs-7">
+					<table class="table table-bordered">
+						<tr>
+							<th>ID</th>
+							<td><%= @group.id %></td>
+						</tr>
+						<tr>
+							<th>棚の名前</th>
+							<td><%= @group.name %></td>
+						</tr>
+						<tr>
+							<th>概要</th>
+							<td><%= @group.outline %></td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-xs-3">
+					<table class="table table-bordered">
+						<tr>
+							<th>作成日時</th>
+							<td><%= @group.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+						</tr>
+						<tr>
+							<th>更新日時</th>
+							<td><%= @group.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-xs-10">
+					<h3>グループメンバー一覧</h3>
+						<table class="table table-bordered">
+							<tr>
+								<th>ID</th>
+								<th>ユーザー名</th>
+								<th>ユーザーID</th>
+							</tr>
+							<% @group.users.each do |user| %>
+								<tr>
+									<td><%= user.id %></td>
+									<td><%= link_to user.name, admins_user_path(user), class: "admin-group__link" %></td>
+									<td><%= user.user_id %></td>
+								</tr>
+							<% end %>
+						</table>
+				</div>
+				<div class="col-xs-10 col-xs-offset-2">
+					<h3>棚一覧</h3>
+					<% if @group.shelves.exists? %>
+						<table>
+							<tr>
+								<th>ID</th>
+								<th>棚の名前</th>
+								<th>棚作成日</th>
+								<th>作品数</th>
+							</tr>
+							<% @group.shelves.each do |shelf| %>
+								<tr>
+									<td><% shelf.id %></td>
+									<td><% link_to shelf.name, admins_shelf_path(shelf), class: "admin-group__link" %></td>
+									<td><% shelf.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+									<td><% shelf.productions.count %></td>
+								</tr>
+							<% end %>
+						</table>
+					<% else %>
+						<p>棚は作成されていません。</p>
+					<% end %>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>

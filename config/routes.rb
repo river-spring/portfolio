@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 }
   root to: 'homes#top'
   get 'search' => "searchs#search"
+  get 'admin_search' => "searchs#admin_search"
   namespace :users do
     get 'users/quit' => "users#quit"
     patch 'users/quit_update' => "users#quit_update"

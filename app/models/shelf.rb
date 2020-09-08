@@ -7,4 +7,8 @@ class Shelf < ApplicationRecord
 	belongs_to :user, optional: true
 	belongs_to :group, optional: true
 	attachment :shelf_image
+	# 管理者用棚検索機能
+	def Shelf.admin_search(category, word)
+		Shelf.where('name LIKE ?', "%#{word}%")
+	end
 end

@@ -48,6 +48,14 @@ class User < ApplicationRecord
                 User.where('user_id LIKE ?', "%#{word}%")
             end
          end
+         # 管理者用ユーザー検索機能
+         def User.admin_search(category, word)
+            if category == "user_name"
+                User.where('name LIKE ?', "%#{word}%")
+            elsif category == "user_id"
+                User.where('user_id LIKE ?', "%#{word}%")
+            end
+         end
          # パスワードに関するバリデーション
          def password_validator
             return if password.blank? || password =~ /\A[a-z0-9]+\z/i

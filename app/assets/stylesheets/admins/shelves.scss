@@ -28,3 +28,9 @@ $subcolor: #b0c4de;
 		}
 	}
 }
+/*管理者棚詳細のCSS*/
+.admin-shelf {
+	&__link {
+		color: $subcolor;
+	}
+}

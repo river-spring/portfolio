@@ -7,4 +7,8 @@ class Group < ApplicationRecord
 	has_many :users, through: :group_users
 	has_many :shelves, dependent: :destroy
 	attachment :image
+	# 管理者用グループ検索機能
+	def Group.admin_search(category, word)
+		Group.where('name LIKE ?', "%#{word}%")
+	end
 end
