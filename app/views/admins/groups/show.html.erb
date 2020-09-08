@@ -7,15 +7,15 @@
 				<div class="col-xs-7">
 					<table class="table table-bordered">
 						<tr>
-							<th>ID</th>
+							<th class="col-xs-2">ID</th>
 							<td><%= @group.id %></td>
 						</tr>
 						<tr>
-							<th>棚の名前</th>
+							<th class="col-xs-2">グループ名</th>
 							<td><%= @group.name %></td>
 						</tr>
 						<tr>
-							<th>概要</th>
+							<th class="col-xs-2">概要</th>
 							<td><%= @group.outline %></td>
 						</tr>
 					</table>
@@ -52,19 +52,19 @@
 				<div class="col-xs-10 col-xs-offset-2">
 					<h3>棚一覧</h3>
 					<% if @group.shelves.exists? %>
-						<table>
+						<table class="table table-bordered">
 							<tr>
 								<th>ID</th>
 								<th>棚の名前</th>
 								<th>棚作成日</th>
 								<th>作品数</th>
 							</tr>
-							<% @group.shelves.each do |shelf| %>
+							<% @shelves.each do |shelf| %>
 								<tr>
-									<td><% shelf.id %></td>
-									<td><% link_to shelf.name, admins_shelf_path(shelf), class: "admin-group__link" %></td>
-									<td><% shelf.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-									<td><% shelf.productions.count %></td>
+									<td><%= shelf.id %></td>
+									<td><%= link_to shelf.name, admins_shelf_path(shelf), class: "admin-group__link" %></td>
+									<td><%= shelf.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+									<td><%= shelf.production_ids.count %></td>
 								</tr>
 							<% end %>
 						</table>

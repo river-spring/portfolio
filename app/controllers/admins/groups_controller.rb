@@ -4,5 +4,6 @@ class Admins::GroupsController < ApplicationController
   end
   def show
   	@group = Group.find(params[:id])
+  	@shelves = Shelf.where(group_id: params[:id])
   end
 end

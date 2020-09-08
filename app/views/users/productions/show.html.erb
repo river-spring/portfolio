@@ -1,13 +1,19 @@
 <div class="body">
 	<div class="container">
 		<div class="row">
-			<%= render 'users/users/sidebar', user: current_user %><!-- サイドバー -->
+			<% if user_signed_in? %>
+				<%= render '/users/users/sidebar', user: current_user %><!-- サイドバー -->
+			<% elsif admin_signed_in? %>
+				<%= render '/admins/users/sidebar' %><!-- 管理者用サイドバー -->
+			<% end %>
 			<section class="production col-xs-8 col-xs-offset-2">
 				<h2><%= @production.title %></h2>
 				<%= image_tag @production.image_id, fallback: "production.png", class: "production__image col-xs-6" %>
 				<p class="col-xs-6">【公開日】<%= @production.release_date %></p><br><br><br>
 				<div class="col-xs-6">【あらすじ】<br><%= @production.outline %></div>
-				<% if @shelf.user_id == current_user.id %>
+				<% if admin_signed_in? %>
+					<%= link_to "棚から削除する", users_shelf_production_path(@shelf), method: :delete, remote: true, class: "btn btn-danger col-xs-offset-10" %>
+				<% elsif @shelf.user_id == current_user.id %>
 					<%= link_to "棚から削除する", users_shelf_production_path(@shelf), method: :delete, remote: true, class: "btn btn-danger col-xs-offset-10" %>
 				<% end %>
 			</section>

@@ -43,7 +43,11 @@ class Users::ProductionsController < ApplicationController
     production = Production.find(params[:id])
     shelf = Shelf.find(params[:shelf_id])
     production.destroy
-    redirect_to users_shelf_path(shelf), alert: "作品を削除しました。"
+    if admin_signed_in?
+      redirect_to admins_shelf_path(shelf), alert: "作品を削除しました。"
+    elsif user_signed_in?
+      redirect_to users_shelf_path(shelf), alert: "作品を削除しました。"
+    end
   end
   private
   def production_params

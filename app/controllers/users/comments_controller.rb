@@ -2,6 +2,7 @@ class Users::CommentsController < ApplicationController
 	def create
 		@production = Production.find(params[:production_id])
 		@shelf = Shelf.find(params[:shelf_id])
+		@group_users = GroupUser.where(group_id: @shelf.group_id).pluck(:user_id)
 		@comment = Comment.new
 		production_comment = current_user.comments.new(comment_params)
 		production_comment.production_id = @production.id
