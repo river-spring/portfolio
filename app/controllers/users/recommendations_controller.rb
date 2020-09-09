@@ -3,6 +3,9 @@ class Users::RecommendationsController < ApplicationController
   def show
   	@recommendation = Recommendation.find(params[:id])
   	@user = User.find_by(id: params[:user_id])
+    if @recommendation.user_id != current_user.id || @recommendation.friend_id != current_user.id
+      redirect_to users_user_path(current_user), alert: "不正なアクセスです！"
+    end
   end
 
   def new

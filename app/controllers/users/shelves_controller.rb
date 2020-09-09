@@ -30,12 +30,17 @@ class Users::ShelvesController < ApplicationController
 
   def edit
     @shelf = Shelf.find(params[:id])
+    group_users = GroupUser.where(group_id: @shelf.group_id).pluck(:user_id)
+    if @shelf.user_id == current_user.id || group_member group_users.include?(current_user.id)
+    else
+      redirect_to users_user_path(current_user), alert: "不正なアクセスです！"
+    end
   end
 
   def update
     @shelf = Shelf.find(params[:id])
     if @shelf.update(shelf_params)
-      redirect_to users_shelf_path(@shelf.id),notice: "棚の変更を保存しました！"
+      redirect_to users_shelf_path(@shelf.id), notice: "棚の変更を保存しました！"
     else
       render :edit
     end

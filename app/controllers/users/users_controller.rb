@@ -11,6 +11,9 @@ class Users::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to users_user_path(@user), alert: "不正なアクセスです！"
+    end
   end
 
   def update
@@ -23,6 +26,12 @@ class Users::UsersController < ApplicationController
   end
 
   def edit_password
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to users_user_path(current_user),notice: "設定を変更しました。"
+    else
+      render :edit
+    end
   end
 
   def password_update
@@ -40,6 +49,7 @@ class Users::UsersController < ApplicationController
   end
 
   def quit
+    @user = User.find(params[:id])
   end
 
   def quit_update

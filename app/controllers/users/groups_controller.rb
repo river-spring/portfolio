@@ -34,6 +34,10 @@ class Users::GroupsController < ApplicationController
     group_user = GroupUser.where(group_id: params[:id]).pluck(:user_id)
     friends = friends - group_user
     @friends = User.where(id: friends)
+    if group_user.include?(current_user.id)
+    else
+      redirect_to users_user_path(current_user), alert: "不正なアクセスです。"
+    end
   end
 
   def update
