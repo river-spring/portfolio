@@ -1,45 +1,45 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
-}
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
   devise_for :users, controllers: {
-  sessions:      'users/sessions',
-  passwords:     'users/passwords',
-  registrations: 'users/registrations'
-}
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations'
+  }
   root to: 'homes#top'
-  get 'search' => "searchs#search"
-  get 'admin_search' => "searchs#admin_search"
+  get 'search' => 'searchs#search'
+  get 'admin_search' => 'searchs#admin_search'
   namespace :users do
-    get 'users/quit' => "users#quit"
-    patch 'users/quit_update' => "users#quit_update"
-    resources :users, only: [ :show, :edit, :update, :destroy] do
-      resources :friends, only: [ :index, :create, :update, :destroy]
-      resources :recommendations, only: [ :show, :new, :create, :update, :destroy]
+    get 'users/quit' => 'users#quit'
+    patch 'users/quit_update' => 'users#quit_update'
+    resources :users, only: %i[show edit update destroy] do
+      resources :friends, only: %i[index create update destroy]
+      resources :recommendations, only: %i[show new create update destroy]
       collection do
-          get :history
-          get :edit_password
-          patch :password_update
+        get :history
+        get :edit_password
+        patch :password_update
       end
     end
-    resources :shelves, only: [ :show, :new, :create, :edit, :update, :destroy] do
-      resources :productions, only: [ :show, :new, :create, :destroy] do
-         collection do
+    resources :shelves, only: %i[show new create edit update destroy] do
+      resources :productions, only: %i[show new create destroy] do
+        collection do
           get :search
-         end
-        resources :comments, only: [ :create, :destroy]
+        end
+        resources :comments, only: %i[create destroy]
       end
     end
     resources :groups
   end
   namespace :admins do
-    resources :users, only: [:index, :show, :edit, :update]
-    resources :groups, only: [:index, :show, :edit, :update, :destroy]
-    resources :shelves, only: [:index, :show, :edit, :update, :destroy] do
+    resources :users, only: %i[index show edit update]
+    resources :groups, only: %i[index show edit update destroy]
+    resources :shelves, only: %i[index show edit update destroy] do
       resources :productions, only: [:destroy] do
-        resources :comments, only: [ :index, :destroy]
+        resources :comments, only: %i[index destroy]
       end
     end
   end

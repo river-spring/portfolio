@@ -2,24 +2,20 @@ class Users::UsersController < ApplicationController
   before_action :authenticate_user!
   def show
     @user = User.find(params[:id])
-    @friend = Friend.find_by(user_id: params[:id],friend_id: current_user.id)
-    if @friend.nil?
-      @friend = Friend.find_by(user_id: current_user.id, friend_id: params[:id])
-    end
+    @friend = Friend.find_by(user_id: params[:id], friend_id: current_user.id)
+    @friend = Friend.find_by(user_id: current_user.id, friend_id: params[:id]) if @friend.nil?
     @shelves = Shelf.where(user_id: @user.id)
   end
 
   def edit
     @user = User.find(params[:id])
-    if @user != current_user
-      redirect_to users_user_path(@user), alert: "不正なアクセスです！"
-    end
+    redirect_to users_user_path(@user), alert: '不正なアクセスです！' if @user != current_user
   end
 
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to users_user_path(current_user),notice: "設定を変更しました。"
+      redirect_to users_user_path(current_user), notice: '設定を変更しました。'
     else
       render :edit
     end
@@ -28,20 +24,20 @@ class Users::UsersController < ApplicationController
   def edit_password
     @user = current_user
     if @user.update(user_params)
-      redirect_to users_user_path(current_user),notice: "設定を変更しました。"
+      redirect_to users_user_path(current_user), notice: '設定を変更しました。'
     else
       render :edit
     end
   end
 
   def password_update
-   if current_user.update(password_params)
-    sign_in(current_user, bypass: true)
-    redirect_to  users_user_path(current_user),notice: "パスワードを変更しました。"
-   else
-    flash.now[:alert] = "パスワードが不正な値です。"
-    render :edit_password
-   end
+    if current_user.update(password_params)
+      sign_in(current_user, bypass: true)
+      redirect_to users_user_path(current_user), notice: 'パスワードを変更しました。'
+    else
+      flash.now[:alert] = 'パスワードが不正な値です。'
+      render :edit_password
+    end
   end
 
   def history
@@ -59,9 +55,11 @@ class Users::UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :user_id, :introduction, :profile_image, :mypage_image, :email)
   end
+
   def password_params
     params.require(:user).permit(:password, :password_confirmation)
   end
