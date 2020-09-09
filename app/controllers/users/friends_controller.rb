@@ -1,4 +1,5 @@
 class Users::FriendsController < ApplicationController
+  before_action :authenticate_user!
   def index
   	@friends = Friend.where(user_id: current_user.id).where(friend_flag: true).or(Friend.where(friend_id: current_user.id).where(friend_flag: true))
   	@my_requests = Friend.where(user_id: current_user.id).where(friend_flag: false)

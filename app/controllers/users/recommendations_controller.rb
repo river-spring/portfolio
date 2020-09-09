@@ -1,4 +1,5 @@
 class Users::RecommendationsController < ApplicationController
+  before_action :authenticate_user!, :authenticate_admin!
   def show
   	@recommendation = Recommendation.find(params[:id])
   	@user = User.find_by(id: params[:user_id])

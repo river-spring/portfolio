@@ -34,3 +34,21 @@ $subcolor: #b0c4de;
 		color: $subcolor;
 	}
 }
+/*管理者用棚編集画面のCSS*/
+.admin-edit-shelf {
+	&__attachment {
+		margin-top: 10px;
+	}
+	&__text {
+		margin-bottom: 10px;
+	}
+	&__submit {
+		margin-top: 100px;
+		margin-bottom: 10px !important;
+		color: $backcolor;
+		background-color: $pointcolor;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}

@@ -1,4 +1,5 @@
 class Users::ShelvesController < ApplicationController
+  before_action :authenticate_user!
   def show
     @shelf = Shelf.find(params[:id])
     @group_users = GroupUser.where(group_id: @shelf.group_id).pluck(:user_id)
@@ -34,7 +35,6 @@ class Users::ShelvesController < ApplicationController
   def update
     @shelf = Shelf.find(params[:id])
     if @shelf.update(shelf_params)
-      flash[:notice] = "変更しました"
       redirect_to users_shelf_path(@shelf.id),notice: "棚の変更を保存しました！"
     else
       render :edit

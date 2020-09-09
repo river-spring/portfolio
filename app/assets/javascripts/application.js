@@ -96,3 +96,23 @@ $(function(){
 		reader.readAsDataURL(e.target.files[0]);
 	});
 });
+// 管理者棚編集画像のプレビュー
+$(function(){
+	$('#admin-edit-shelf-image').on('change', function(e) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+		$(".admin-edit-shelf-img").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	});
+});
+// 管理者グループ編集画面のプレビュー
+$(function(){
+	$('#admin-edit-group-image').on('change', function(e) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+		$(".admin-edit-group-img").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	});
+});

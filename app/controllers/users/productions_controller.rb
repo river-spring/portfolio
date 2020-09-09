@@ -1,4 +1,5 @@
 class Users::ProductionsController < ApplicationController
+  before_action :authenticate_user!
   def show
     @production = Production.find(params[:id])
     @shelf = Shelf.find(params[:shelf_id])

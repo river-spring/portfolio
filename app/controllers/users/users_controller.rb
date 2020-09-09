@@ -1,4 +1,5 @@
 class Users::UsersController < ApplicationController
+  before_action :authenticate_user!
   def show
     @user = User.find(params[:id])
     @friend = Friend.find_by(user_id: params[:id],friend_id: current_user.id)

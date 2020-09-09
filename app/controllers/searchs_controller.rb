@@ -1,4 +1,5 @@
 class SearchsController < ApplicationController
+  before_action :authenticate_user!, :authenticate_admin!
   def search
   	@user = params[:user]
   	@word = params[:word]

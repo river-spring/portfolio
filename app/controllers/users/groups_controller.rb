@@ -59,6 +59,7 @@ class Users::GroupsController < ApplicationController
     group.destroy
     redirect_to  users_groups_path(anchor: "group_index"), alert: "グループを解散しました。"
   end
+  private
   def group_params
     params.require(:group).permit(:name, :image, :outline, group_users: [])
   end

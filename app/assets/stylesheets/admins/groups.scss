@@ -34,3 +34,23 @@ $subcolor: #b0c4de;
 		color: $subcolor;
 	}
 }
+/*管理者グループ編集画面のCSS*/
+.admin-edit-group {
+	&__attachment {
+		margin-top: 10px;
+	}
+	&__text {
+		margin-bottom: 10px;
+	}
+	&__submit {
+		margin-top: 50px;
+		color: $backcolor;
+		background-color: $pointcolor;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+	&__btn {
+		margin-top: 40px;
+	}
+}

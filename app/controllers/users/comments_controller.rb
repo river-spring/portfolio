@@ -1,4 +1,5 @@
 class Users::CommentsController < ApplicationController
+	before_action :authenticate_user!
 	def create
 		@production = Production.find(params[:production_id])
 		@shelf = Shelf.find(params[:shelf_id])
