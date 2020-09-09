@@ -23,10 +23,14 @@
 休日のリフレッシュに。仕事終わりのストレス解消に。
 
 ## 設計書
-- UIflow図 https://drive.google.com/file/d/1lzyWDPG8O9uqlT2SZ9UKA5P_B8T6u6pA/view?usp=sharing
-- ワイヤーフレーム（ユーザー側） https://drive.google.com/file/d/1Zod8wEXeahHB1WoHyTnycEN3ML_gQwPZ/view?usp=sharing
-- ワイヤーフレーム（管理者側） https://drive.google.com/file/d/1KVGKz1Kpb67jFrLSNjrUaAL9PMYaAUL1/view?usp=sharing
-- ER図 https://drive.google.com/file/d/17fOo_ps6RzyeoBv2LeCRJnXtXZCnNo9l/view?usp=sharing
+- UIflow図
+https://drive.google.com/file/d/1lzyWDPG8O9uqlT2SZ9UKA5P_B8T6u6pA/view?usp=sharing
+- ワイヤーフレーム（ユーザー側）
+https://drive.google.com/file/d/1Zod8wEXeahHB1WoHyTnycEN3ML_gQwPZ/view?usp=sharing
+- ワイヤーフレーム（管理者側）
+https://drive.google.com/file/d/1KVGKz1Kpb67jFrLSNjrUaAL9PMYaAUL1/view?usp=sharing
+- ER図
+https://drive.google.com/file/d/17fOo_ps6RzyeoBv2LeCRJnXtXZCnNo9l/view?usp=sharing
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1CUcfu_B2kOTTjMMi4Q84bos1lmC0gz2G3rckE_gX5_E/edit?usp=sharing
