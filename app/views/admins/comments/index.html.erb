@@ -1,0 +1,38 @@
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<%= render 'admins/users/sidebar'%><!-- 管理者用サイドバー -->
+			<section class="admin-comment-list col-xs-10">
+				<!-- アラートメッセージ -->
+            	<% if flash[:alert].present? %>
+              		<div class="alert alert-danger alert-dismissible alert_li">
+              			<button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+              			<%= flash[:alert] %>
+              		</div>
+            	<% end %>
+            	<!-- アラートメッセージ -->
+				<h2>"<%= @production.title %>"コメントリスト</h2>
+				<% if @comments.exists? %>
+					<table class="table table-bordered">
+						<tr>
+							<th class="col-xs-2">ユーザー名</th>
+							<th class="col-xs-6">コメント</th>
+							<th class="col-xs-2">投稿日時</th>
+							<th class="col-xs-2"></th>
+						</tr>
+						<% @comments.each do |comment| %>
+						<tr>
+							<td><%= comment.user.name %></td>
+							<td><%= comment.comment %></td>
+							<td><%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+							<td><%= link_to "削除する", admins_shelf_production_comment_path(shelf_id: @production.shelf_id, production_id: @production.id, id: comment.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
+						</tr>
+						<% end %>
+					</table>
+				<% else %>
+					<p>コメントはありません。</p>
+				<% end %>
+			</section>
+		</div>
+	</div>
+</div>

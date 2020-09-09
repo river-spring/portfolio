@@ -1,11 +1,7 @@
 <div class="body">
 	<div class="container">
 		<div class="row">
-			<% if user_signed_in? %>
-				<%= render '/users/users/sidebar', user: current_user %><!-- サイドバー -->
-			<% elsif admin_signed_in? %>
-				<%= render '/admins/users/sidebar' %><!-- 管理者用サイドバー -->
-			<% end %>
+			<%= render '/users/users/sidebar', user: current_user %><!-- サイドバー -->
 			<section class="production col-xs-8 col-xs-offset-2">
 				<h2><%= @production.title %></h2>
 				<%= image_tag @production.image_id, fallback: "production.png", class: "production__image col-xs-6" %>
