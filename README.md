@@ -24,15 +24,17 @@
 
 ## 設計書
 - UIflow図  
-https://drive.google.com/file/d/1lzyWDPG8O9uqlT2SZ9UKA5P_B8T6u6pA/view?usp=sharing
+https://drive.google.com/file/d/1lzyWDPG8O9uqlT2SZ9UKA5P_B8T6u6pA/view?usp=sharing  
 - ワイヤーフレーム（ユーザー側）  
-https://drive.google.com/file/d/1Zod8wEXeahHB1WoHyTnycEN3ML_gQwPZ/view?usp=sharing
+https://drive.google.com/file/d/1Zod8wEXeahHB1WoHyTnycEN3ML_gQwPZ/view?usp=sharing  
 - ワイヤーフレーム（管理者側）  
-https://drive.google.com/file/d/1KVGKz1Kpb67jFrLSNjrUaAL9PMYaAUL1/view?usp=sharing
+https://drive.google.com/file/d/1KVGKz1Kpb67jFrLSNjrUaAL9PMYaAUL1/view?usp=sharing  
 - ER図  
-https://drive.google.com/file/d/17fOo_ps6RzyeoBv2LeCRJnXtXZCnNo9l/view?usp=sharing
+https://drive.google.com/file/d/17fOo_ps6RzyeoBv2LeCRJnXtXZCnNo9l/view?usp=sharing  
 - テーブル設計書  
-https://www.icloud.com/numbers/0eQ9QDJn0zdFGhu_058NilaOQ
+https://www.icloud.com/numbers/0eQ9QDJn0zdFGhu_058NilaOQ  
+- アプリケーション詳細設計  
+https://www.icloud.com/numbers/0g0xuUpJZ0AjFLRZtibW8XP_A  
 
 ### 機能一覧  
 https://docs.google.com/spreadsheets/d/1CUcfu_B2kOTTjMMi4Q84bos1lmC0gz2G3rckE_gX5_E/edit?usp=sharing
