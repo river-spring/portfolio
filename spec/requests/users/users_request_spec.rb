@@ -73,11 +73,11 @@ RSpec.describe "Users::Users", type: :request do
 				end
 				it 'フレンドリンクが表示される' do
 					visit users_user_path(user)
-					expect(page).to have_link "フレンド" , href: users_user_friends_path(user_id: user)
+					expect(page).to have_link "フレンド" , href: users_user_friends_path(user_id: user, anchor: "friend__tab_menu")
 				end
 				it 'グループリンクが表示される' do
 					visit users_user_path(user)
-					expect(page).to have_link "グループ" , href: users_groups_path
+					expect(page).to have_link "グループ" , href: users_groups_path(anchor: "group_index")
 				end
 				it 'ユーザー検索リンクが表示される' do
 					visit users_user_path(user)
