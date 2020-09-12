@@ -11,4 +11,4 @@
 # User.create!(name: "一郎＠コメディマニア",user_id: "test4", password: "444444",introduction: "テストです。テストです。テストです。テストです。テストです。テストです。テストです。テストです。テストです。テストです。テストです。テストです。",email: "ddd@ddd")
 # User.create!(name: "やまだ＠不定期",user_id: "test5", password: "555555",introduction: "",email: "eee@eee")
 
-# Admin.create!(user_id: "admin", password: "aaaaaa", email: "zzz@zzz")
+Admin.create!(user_id: "admin", password: "pfadmin", email: "zzz@zzz")
