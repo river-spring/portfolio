@@ -37,11 +37,6 @@ class Users::ProductionsController < ApplicationController
   def create
     @shelf = Shelf.find(params[:shelf_id])
     production = Production.create!(production_params)
-    # # タグ付けに関する記述
-    # tags = Vision.get_image_data(production.image_id)
-    # tags.each do |tag|
-    #   production.tags.create(name: tag)
-    # end
     redirect_to users_shelf_path(@shelf), notice: '作品を棚に追加しました！'
   end
 

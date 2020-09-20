@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :users, only: %i[index show edit update]
     resources :groups, only: %i[index show edit update destroy]
+    get 'comments/check' => 'comments#check'
+    get 'comments/comments_check' => 'comments#comments_check'
     resources :shelves, only: %i[index show edit update destroy] do
       resources :productions, only: [:destroy] do
         resources :comments, only: %i[index destroy]

@@ -1,3 +1,14 @@
 // Place all the styles related to the admins/comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*使用している変数*/
+$backcolor: #07052b;
+$pointcolor: #f1d145;
+$textcolor: #ffffff;
+$subcolor: #b0c4de;
+/*コメント一覧のCSS*/
+.admin-comments{
+	&__check-btn {
+		margin: 10px;
+	}
+}
