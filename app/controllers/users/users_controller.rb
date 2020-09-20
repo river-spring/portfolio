@@ -1,5 +1,14 @@
 class Users::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_guest, only: [:edit, :update, :edit_password, :password_update, :quit, :quit_update]
+
+# ゲストログインは編集・退会を行えない
+  def check_guest
+    if current_user.email == 'guest@example.com'
+      redirect_to users_user_path(current_user), alert: 'ゲストユーザーにはない権限です。'
+    end
+  end
+
   def show
     @user = User.find(params[:id])
     @friend = Friend.find_by(user_id: params[:id], friend_id: current_user.id)

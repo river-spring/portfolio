@@ -41,6 +41,7 @@
                 <li><%= link_to "About", root_path(anchor: "about"), class: "nav__menu__icon" %></li>
                 <li ><%= link_to "Log in",new_user_session_path, class: "nav__menu__icon" %></li>
                 <li><%= link_to "Sign up", new_user_registration_path, class: "nav__menu__icon" %></li>
+                <li><%= link_to "Guest", users_guest_sign_in_path, method: :post, class: "nav__menu__icon" %></li>
               <% end %>
             </ul>
           </div>
