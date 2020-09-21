@@ -17,12 +17,19 @@ class Admins::CommentsController < ApplicationController
 
   def comments_check
   	@comments = Comment.where(score: -1.0..-0.1)
-  	flash[:notice] = 'ネガティブコメントを抽出しました。'
+  	require 'uri'
+  	uri = URI.parse(request.referer)
+  	if uri.path == "/admins/comments/check"
+  		flash[:notice] = 'ネガティブコメントを抽出しました。'
+  	end
   end
 
   def destroy
     comment = Comment.find(params[:id])
-    comment.destroy
-    redirect_to request.referer, alert: 'コメントを削除しました。'
+    if comment.destroy
+    	redirect_back(fallback_location: root_path, alert: 'コメントを削除しました。')
+    else
+    	redirect_back(fallback_location: root_path, alert: '削除に失敗しました。')
+	end
   end
 end
