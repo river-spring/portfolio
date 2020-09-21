@@ -63,6 +63,7 @@ class User < ApplicationRecord
 
     errors.add :password, 'パスワードは半角英数で入力してください。'
   end
+
   # ゲストログイン機能
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name: 'ゲストログイン', user_id: 'guestlogin', introduction: 'ゲストログイン用マイページです。ユーザー編集は使用できません。ユーザー編集ではプロフィール画像やマイページ画像を変更することもできます。') do |user|

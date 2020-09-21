@@ -1,12 +1,10 @@
 class Users::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_guest, only: [:edit, :update, :edit_password, :password_update, :quit, :quit_update]
+  before_action :check_guest, only: %i[edit update edit_password password_update quit quit_update]
 
-# ゲストログインは編集・退会を行えない
+  # ゲストログインは編集・退会を行えない
   def check_guest
-    if current_user.email == 'guest@example.com'
-      redirect_to users_user_path(current_user), alert: 'ゲストユーザーにはない権限です。'
-    end
+    redirect_to users_user_path(current_user), alert: 'ゲストユーザーにはない権限です。' if current_user.email == 'guest@example.com'
   end
 
   def show
