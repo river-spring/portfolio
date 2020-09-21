@@ -17,6 +17,7 @@ class Admins::CommentsController < ApplicationController
 
   def comments_check
   	@comments = Comment.where(score: -1.0..-0.1)
+  	# ネガティブコメントを抽出ボタンを押した時のみフラッシュメッセージを表示
   	require 'uri'
   	uri = URI.parse(request.referer)
   	if uri.path == "/admins/comments/check"
