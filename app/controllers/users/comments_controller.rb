@@ -7,6 +7,7 @@ class Users::CommentsController < ApplicationController
     @comment = Comment.new
     production_comment = current_user.comments.new(comment_params)
     production_comment.production_id = @production.id
+    production_comment.score = Language.get_data(production_comment.comment)
     production_comment.save
   end
 

@@ -7,12 +7,12 @@ class Admins::CommentsController < ApplicationController
   def check
     @comments = Comment.all
     # 感情スコアがなければ挿入する
-    @comments.each do |comment|
-      if comment.score.nil?
-        comment.score = Language.get_data(comment.comment)
-        comment.update(score: comment.score)
-      end
-    end
+    # @comments.each do |comment|
+    #   if comment.score.nil?
+    #     comment.score = Language.get_data(comment.comment)
+    #     comment.update(score: comment.score)
+    #   end
+    # end
   end
 
   def comments_check
